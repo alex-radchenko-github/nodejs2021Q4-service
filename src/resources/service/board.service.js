@@ -1,4 +1,5 @@
-const usersRepo = require('../memory.repository.js');
+const usersRepo = require('../repository/board.repository.js');
+
 
 const getAllBoards = () => usersRepo.getAllBoards();
 const getOneBoard = (boardId) => usersRepo.getOneBoard(boardId);

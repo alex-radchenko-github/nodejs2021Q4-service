@@ -1,4 +1,5 @@
-const usersRepo = require('../memory.repository.js');
+const usersRepo = require('../repository/user.repository');
+
 
 const getAllUsers = () => usersRepo.getAll();
 const getOneUser = (userId) => usersRepo.getOne(userId);

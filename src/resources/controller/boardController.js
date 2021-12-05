@@ -1,4 +1,5 @@
-const boardService = require('../service/board.service');
+const boardService = require('../service/board.service.js');
+
 
 const getAllBoards = async () =>
     boardService.getAllBoards()
