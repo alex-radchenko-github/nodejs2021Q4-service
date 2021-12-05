@@ -3,6 +3,7 @@ const userService = require('../service/user.service.js');
 
 const getAllUsers = async () => userService.getAllUsers().map(x => userService.returnUserWithoutPass(x));
 
+
 const getOneUser = async (req) => {
     const {userId} = req.params;
     return userService.returnUserWithoutPass(userService.getOneUser(userId));

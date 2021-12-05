@@ -1,5 +1,49 @@
 const userController = require('../controller/userController.js');
 
+const getUserValidation = {
+    params: {
+        userId: {type: 'string', format: 'uuid'}
+    },
+    response: {
+        200: {
+            type: 'object',
+            properties: {
+                id: {type: 'string'},
+                name: {type: 'string'},
+                login: {type: 'string'}
+            }
+        }
+    }
+}
+
+
+const addUserValidation = {
+    body: {
+        type: 'object',
+        additionalProperties: false,
+        required: [
+            'name',
+            'login',
+            'password'
+        ],
+        properties: {
+            name: { type: 'string' },
+            login: { type: 'string' },
+            password: { type: 'string' }
+        }
+    },
+    response: {
+        200: {
+            type: 'object',
+            properties: {
+                id: {type: 'string'},
+                name: {type: 'string'},
+                login: {type: 'string'}
+            }
+        }
+    }
+}
+
 const userRoutes = [
     {
         method: 'GET',
@@ -9,11 +53,13 @@ const userRoutes = [
     {
         method: 'GET',
         url: '/users/:userId',
+        schema: getUserValidation,
         handler: userController.getOneUser
     },
     {
         method: 'POST',
         url: '/users',
+        schema: addUserValidation,
         handler: userController.addUser
     },
     {
