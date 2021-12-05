@@ -30,7 +30,7 @@ const addBoardValidation = {
         }
     },
     response: {
-        200: {
+        201: {
             type: 'object',
             properties: {
                 id: {type: 'string'},

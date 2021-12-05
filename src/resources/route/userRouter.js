@@ -27,13 +27,13 @@ const addUserValidation = {
             'password'
         ],
         properties: {
-            name: { type: 'string' },
-            login: { type: 'string' },
-            password: { type: 'string' }
+            name: {type: 'string'},
+            login: {type: 'string'},
+            password: {type: 'string'}
         }
     },
     response: {
-        200: {
+        201: {
             type: 'object',
             properties: {
                 id: {type: 'string'},
