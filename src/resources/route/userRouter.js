@@ -27,4 +27,5 @@ const userRoutes = [
         handler: userController.deleteUser
     }
 ]
+
 module.exports = userRoutes
