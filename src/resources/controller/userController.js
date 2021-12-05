@@ -1,6 +1,5 @@
 const userService = require('../service/user.service.js');
 
-
 const getAllUsers = async () => userService.getAllUsers().map(x => userService.returnUserWithoutPass(x));
 
 
