@@ -1,6 +1,6 @@
 const userController = require('../controller/userController.js');
 
-const routes = [
+const userRoutes = [
     {
         method: 'GET',
         url: '/users',
@@ -24,7 +24,7 @@ const routes = [
     {
         method: 'DELETE',
         url: '/users/:userId',
-        handler: userController.updateUser
+        handler: userController.deleteUser
     }
 ]
-module.exports = routes
+module.exports = userRoutes
