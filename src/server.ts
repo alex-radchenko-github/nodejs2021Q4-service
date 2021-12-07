@@ -1,6 +1,7 @@
-const { PORT } = require('./common/config');
-const app = require('./app');
+const { PORT } = require('./common/config.ts');
 
-app.listen(PORT, () =>
-    app.log.info(`App is running on http://localhost:${PORT}`)
+const application = require('./app.ts');
+
+application.listen(PORT, () =>
+    application.log.info(`App is running on http://localhost:${PORT}`)
 );

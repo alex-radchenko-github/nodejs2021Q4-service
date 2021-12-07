@@ -1,4 +1,4 @@
-const boardController = require('../controller/boardController.js');
+const boardController = require('../controller/boardController.ts');
 
 const getBoardValidation = {
     params: {

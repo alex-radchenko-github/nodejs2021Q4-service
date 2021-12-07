@@ -1,10 +1,12 @@
-const boardService = require('../service/board.service.js');
+const boardService = require('../service/board.service.ts');
 
 
+// @ts-ignore
 const getAllBoards = async () =>
     boardService.getAllBoards()
 
 
+// @ts-ignore
 const getOneBoard = async (req, res) => {
     const {boardId} = req.params;
     if (!boardService.getOneBoard(boardId)[0]) {
@@ -18,17 +20,20 @@ const getOneBoard = async (req, res) => {
 
 };
 
+// @ts-ignore
 const addBoard = async (req, res) => {
     res.status(201);
     return boardService.addBoard(req.body);
 };
 
+// @ts-ignore
 const updateBoard = async (req, res) => {
     const {boardId} = req.params;
     res.status(200);
     return boardService.updateBoard(boardId, req.body);
 };
 
+// @ts-ignore
 const deleteBoard = async (req, res) => {
     const {boardId} = req.params;
     res.status(204);

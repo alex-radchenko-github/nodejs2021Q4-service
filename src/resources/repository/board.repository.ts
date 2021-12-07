@@ -1,13 +1,19 @@
+// @ts-ignore
 const {v4: uuidv4} = require("uuid");
-const usersRepo = require('./memory.repository.js');
+// @ts-ignore
+const usersRepo = require('./memory.repository.ts');
 
+// @ts-ignore
 const getAllBoards = () => usersRepo.data.boards;
 
+// @ts-ignore
 function getOneBoard(boardId) {
 
+    // @ts-ignore
     return usersRepo.data.boards.filter(x => x.id === boardId);
 }
 
+// @ts-ignore
 function addBoard(board) {
     const newBoard = board;
     newBoard.id = uuidv4();
@@ -20,6 +26,7 @@ function addBoard(board) {
     return newBoard;
 }
 
+// @ts-ignore
 function deleteBoard(boardId) {
     let boardIndex = null;
     for (let i = 0; i < usersRepo.data.boards.length; i += 1) {
@@ -30,11 +37,13 @@ function deleteBoard(boardId) {
     }
     usersRepo.data.boards.splice(boardIndex, 1);
 
+    // @ts-ignore
     usersRepo.data.task = usersRepo.data.task.filter(x => x.boardId !== boardId)
 
 
 }
 
+// @ts-ignore
 function updateBoard(boardId, body) {
 
     let boardIndex = null;
@@ -50,6 +59,7 @@ function updateBoard(boardId, body) {
 
     };
 
+    // @ts-ignore
     usersRepo.data.boards[boardIndex] = {...updatedBoard};
     return updatedBoard;
 }

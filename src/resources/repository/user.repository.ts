@@ -1,10 +1,14 @@
+// @ts-ignore
 const {v4: uuidv4} = require("uuid");
-const usersRepo = require('./memory.repository.js');
+// @ts-ignore
+const usersRepo = require('./memory.repository.ts');
 
 const getAll = () => usersRepo.data.user;
 
+// @ts-ignore
 const getOne = userId => usersRepo.data.user.filter(x => x.id === userId)[0];
 
+// @ts-ignore
 function addUser(user) {
     const newUser = user;
     newUser.id = uuidv4();
@@ -12,6 +16,7 @@ function addUser(user) {
     return user;
 }
 
+// @ts-ignore
 function updateUser(userId, body) {
 
     let userIndex = null;
@@ -24,13 +29,16 @@ function updateUser(userId, body) {
     const updatedUser = {
         ...body,
         id: userId,
+        // @ts-ignore
         password: usersRepo.data.user[userIndex].password
 
     };
 
+    // @ts-ignore
     usersRepo.data.user[userIndex] = {...updatedUser};
     return updatedUser;
 }
+// @ts-ignore
 
 function deleteUser(userId) {
     let userIndex = null;

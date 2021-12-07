@@ -1,25 +1,30 @@
-const userService = require('../service/user.service.js');
+const userService = require('../service/user.service.ts');
 
+// @ts-ignore
 const getAllUsers = async () => userService.getAllUsers().map(x => userService.returnUserWithoutPass(x));
 
 
+// @ts-ignore
 const getOneUser = async (req) => {
     const {userId} = req.params;
     return userService.returnUserWithoutPass(userService.getOneUser(userId));
 };
 
+// @ts-ignore
 const addUser = async (req, res) => {
     res.status(201);
     return userService.returnUserWithoutPass(userService.addUser(req.body));
 
 };
 
+// @ts-ignore
 const updateUser = async (req, res) => {
     const {userId} = req.params;
     res.status(200);
     return userService.returnUserWithoutPass(userService.updateUser(userId, req.body));
 };
 
+// @ts-ignore
 const deleteUser = async (req, res) => {
     const {userId} = req.params;
     res.status(204);
