@@ -1,9 +1,8 @@
 const boardService = require('../service/board.service.ts');
 
 
-// @ts-ignore
 const getAllBoards = async () =>
-    boardService.getAllBoards()
+    boardService.getAllBoardsService()
 
 
 // @ts-ignore

@@ -4,8 +4,7 @@ const {v4: uuidv4} = require("uuid");
 // @ts-ignore
 const repo = require('./memory.repository.ts');
 
-// @ts-ignore
-const getAllBoards = () => repo.data.boards;
+const getAllBoardsRepo = () => repo.data.boards;
 
 // @ts-ignore
 function getOneBoard(boardId) {
@@ -66,7 +65,7 @@ function updateBoard(boardId, body) {
 }
 
 module.exports = {
-    getAllBoards,
+    getAllBoardsRepo,
     getOneBoard,
     addBoard,
     deleteBoard,
