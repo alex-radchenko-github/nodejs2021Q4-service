@@ -1,25 +1,23 @@
-// @ts-ignore
-const {v4: uuidv4} = require("uuid");
+const {v4: uuidv4ForUser} = require("uuid");
 
-// @ts-ignore
-const repo = require('./memory.repository.ts');
+const repoForUser = require('./memory.repository.ts');
 
-const getAll = () => repo.data.user;
+const getAll = () => repoForUser.data.user;
 
-const getOne = (userId: string) => repo.data.user.filter((x: { id: string; }) => x.id === userId)[0];
+const getOne = (userId: string) => repoForUser.data.user.filter((x: { id: string; }) => x.id === userId)[0];
 
-function addUserRepo(user: {id: number}) {
+function addUserRepo(user: {id: string}) {
     const newUser = user;
-    newUser.id = uuidv4();
-    repo.data.user.push(newUser);
+    newUser.id = uuidv4ForUser();
+    repoForUser.data.user.push(newUser);
     return newUser;
 }
 
 function updateUserRepo(userId: string, body: object) {
 
     let userIndex: number = 0;
-    for (let i = 0; i < repo.data.user.length; i += 1) {
-        if (repo.data.user[i].id === userId) {
+    for (let i = 0; i < repoForUser.data.user.length; i += 1) {
+        if (repoForUser.data.user[i].id === userId) {
             userIndex = i;
             break;
         }
@@ -27,29 +25,27 @@ function updateUserRepo(userId: string, body: object) {
     const updatedUser = {
         ...body,
         id: userId,
-        password: repo.data.user[userIndex].password
+        password: repoForUser.data.user[userIndex].password
 
     };
-    repo.data.user[userIndex] = {...updatedUser};
+    repoForUser.data.user[userIndex] = {...updatedUser};
     return updatedUser;
 }
 
-// @ts-ignore
-
-function deleteUser(userId) {
+function deleteUserRepo(userId: string) {
     let userIndex = null;
-    for (let i = 0; i < repo.data.user.length; i += 1) {
-        if (repo.data.user[i].id === userId) {
+    for (let i = 0; i < repoForUser.data.user.length; i += 1) {
+        if (repoForUser.data.user[i].id === userId) {
             userIndex = i;
             break;
         }
     }
 
-    repo.data.user.splice(userIndex, 1);
+    repoForUser.data.user.splice(userIndex, 1);
 
-    for (let i = 0; i < repo.data.task.length; i += 1) {
-        if (repo.data.task[i].userId === userId) {
-            repo.data.task[i].userId = null
+    for (let i = 0; i < repoForUser.data.task.length; i += 1) {
+        if (repoForUser.data.task[i].userId === userId) {
+            repoForUser.data.task[i].userId = null
         }
     }
 
@@ -61,5 +57,5 @@ module.exports = {
     getOne,
     addUserRepo,
     updateUserRepo,
-    deleteUser,
+    deleteUserRepo,
 };
