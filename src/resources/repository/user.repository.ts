@@ -6,15 +6,13 @@ const repo = require('./memory.repository.ts');
 
 const getAll = () => repo.data.user;
 
-
 const getOne = (userId: string) => repo.data.user.filter((x: { id: string; }) => x.id === userId)[0];
 
-// @ts-ignore
-function addUser(user) {
+function addUserRepo(user: {id: number}) {
     const newUser = user;
     newUser.id = uuidv4();
     repo.data.user.push(newUser);
-    return user;
+    return newUser;
 }
 
 // @ts-ignore
@@ -64,7 +62,7 @@ function deleteUser(userId) {
 module.exports = {
     getAll,
     getOne,
-    addUser,
+    addUserRepo,
     updateUser,
     deleteUser,
 };

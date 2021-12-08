@@ -12,7 +12,7 @@ const getOneUser = async (req: { params: { userId: string; }; }) => {
 // @ts-ignore
 const addUser = async (req, res) => {
     res.status(201);
-    return userService.returnUserWithoutPass(userService.addUser(req.body));
+    return userService.returnUserWithoutPass(userService.addUserService(req.body));
 
 };
 
