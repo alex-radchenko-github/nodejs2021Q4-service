@@ -49,6 +49,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': ['error'],
     'lines-between-class-members': 'off',
     '@typescript-eslint/no-var-requires': 0,
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-inferrable-types":0
   }
 };

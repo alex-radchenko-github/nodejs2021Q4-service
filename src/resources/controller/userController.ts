@@ -14,11 +14,10 @@ const addUser = async (req: { body: object; }, res: { status: (arg0: number) => 
     return userService.returnUserWithoutPass(userService.addUserService(req.body));
 };
 
-// @ts-ignore
-const updateUser = async (req, res) => {
+const updateUser = async (req: { params: { userId: string; }; body: object; }, res: { status: (arg0: number) => void; }) => {
     const {userId} = req.params;
     res.status(200);
-    return userService.returnUserWithoutPass(userService.updateUser(userId, req.body));
+    return userService.returnUserWithoutPass(userService.updateUserService(userId, req.body));
 };
 
 // @ts-ignore

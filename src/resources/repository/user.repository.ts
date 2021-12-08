@@ -15,10 +15,9 @@ function addUserRepo(user: {id: number}) {
     return newUser;
 }
 
-// @ts-ignore
-function updateUser(userId, body) {
+function updateUserRepo(userId: string, body: object) {
 
-    let userIndex = null;
+    let userIndex: number = 0;
     for (let i = 0; i < repo.data.user.length; i += 1) {
         if (repo.data.user[i].id === userId) {
             userIndex = i;
@@ -28,15 +27,13 @@ function updateUser(userId, body) {
     const updatedUser = {
         ...body,
         id: userId,
-        // @ts-ignore
         password: repo.data.user[userIndex].password
 
     };
-
-    // @ts-ignore
     repo.data.user[userIndex] = {...updatedUser};
     return updatedUser;
 }
+
 // @ts-ignore
 
 function deleteUser(userId) {
@@ -63,6 +60,6 @@ module.exports = {
     getAll,
     getOne,
     addUserRepo,
-    updateUser,
+    updateUserRepo,
     deleteUser,
 };
