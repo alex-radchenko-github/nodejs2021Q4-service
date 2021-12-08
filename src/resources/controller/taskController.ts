@@ -1,43 +1,38 @@
 const taskService = require('../service/task.service.ts');
 
-// @ts-ignore
-const getAllTasks = async (req, res) => {
+const getAllTasks = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
     res.status(200);
-    return taskService.getAllTasks(boardId);
+    return taskService.getAllTasksService(boardId);
 }
 
-// @ts-ignore
-const getOneTask = async (req, res) => {
+const getOneTask = async (req: { params: { boardId: string; taskId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
     const {boardId, taskId} = req.params;
-    if (!taskService.getOneTask(boardId, taskId)) {
+    if (!taskService.getOneTaskService(boardId, taskId)) {
         res.status(404);
         return res.send('no ID');
     }
     res.status(200);
-    return taskService.getOneTask(boardId, taskId);
+    return taskService.getOneTaskService(boardId, taskId);
 
 };
 
-// @ts-ignore
-const addTask = async (req, res) => {
+const addTask = async (req: { params: { boardId: string; }; body: object; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
     res.status(201);
-    return taskService.addTask(boardId, req.body);
+    return taskService.addTaskService(boardId, req.body);
 };
 
-// @ts-ignore
-const updateTask = async (req, res) => {
+const updateTask = async (req: { params: { boardId: string; taskId: string; }; body: object; }, res: { status: (arg0: number) => void; }) => {
     const {boardId, taskId} = req.params;
     res.status(200);
-    return taskService.updateTask(boardId, taskId, req.body);
+    return taskService.updateTaskService(boardId, taskId, req.body);
 };
 
-// @ts-ignore
-const deleteTask = async (req, res) => {
+const deleteTask = async (req: { params: { boardId: string; taskId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId, taskId} = req.params;
     res.status(204);
-    return taskService.deleteTask(boardId, taskId);
+    return taskService.deleteTaskService(boardId, taskId);
 };
 
 module.exports = {

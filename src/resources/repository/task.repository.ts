@@ -1,37 +1,29 @@
-// @ts-ignore
-const {v4: uuidv4} = require("uuid");
+const {v4: uuidv4ForTask} = require("uuid");
 
-// @ts-ignore
-const repo = require('./memory.repository.ts');
+const memoryRepo = require('./memory.repository.ts');
 
-// @ts-ignore
-function getAllTasks(brdId) {
-    // @ts-ignore
-    return repo.data.task.filter(x => x.boardId === brdId)
+function getAllTasksRepo(brdId: string) {
+    return memoryRepo.data.task.filter((x: { boardId: string; }) => x.boardId === brdId)
 }
 
-// @ts-ignore
-function addTask(boardId, task) {
+function addTaskRepo(boardId: string, task: { id: string, boardId: string }) {
     const newTask = task;
-    newTask.id = uuidv4();
+    newTask.id = uuidv4ForTask();
     newTask.boardId = boardId;
-    repo.data.task.push(newTask);
+    memoryRepo.data.task.push(newTask);
     return newTask;
 }
 
-// @ts-ignore
-function getOneTask(boardId, taskId) {
+function getOneTaskRepo(boardId: string, taskId: string) {
 
-    // @ts-ignore
-    return repo.data.task.filter(x => x.boardId === boardId && x.id === taskId)[0];
+    return memoryRepo.data.task.filter((x: { boardId: string; id: string; }) => x.boardId === boardId && x.id === taskId)[0];
 }
 
-// @ts-ignore
-function updateTask(boardId, taskId, task) {
+function updateTaskRepo(boardId: string, taskId: string, task: object) {
 
-    let taskIndex = null;
-    for (let i = 0; i < repo.data.task.length; i += 1) {
-        if (repo.data.task[i].boardId === boardId && repo.data.task[i].id === taskId) {
+    let taskIndex = 0;
+    for (let i = 0; i < memoryRepo.data.task.length; i += 1) {
+        if (memoryRepo.data.task[i].boardId === boardId && memoryRepo.data.task[i].id === taskId) {
             taskIndex = i;
             break;
         }
@@ -43,29 +35,27 @@ function updateTask(boardId, taskId, task) {
 
     };
 
-    // @ts-ignore
-    repo.data.task[taskIndex] = {...updatedBoard};
+    memoryRepo.data.task[taskIndex] = {...updatedBoard};
     return updatedBoard;
 }
 
-// @ts-ignore
-function deleteTask(boardId, taskId) {
+function deleteTaskRepo(boardId: string, taskId: string) {
     let taskIndex = null;
-    for (let i = 0; i < repo.data.task.length; i += 1) {
-        if (repo.data.task[i].boardId === boardId && repo.data.task[i].id === taskId) {
+    for (let i = 0; i < memoryRepo.data.task.length; i += 1) {
+        if (memoryRepo.data.task[i].boardId === boardId && memoryRepo.data.task[i].id === taskId) {
             taskIndex = i;
             break;
         }
     }
 
-    repo.data.task.splice(taskIndex, 1);
+    memoryRepo.data.task.splice(taskIndex, 1);
 
 }
 
 module.exports = {
-    getAllTasks,
-    addTask,
-    getOneTask,
-    updateTask,
-    deleteTask
+    getAllTasksRepo,
+    addTaskRepo,
+    getOneTaskRepo,
+    updateTaskRepo,
+    deleteTaskRepo
 };

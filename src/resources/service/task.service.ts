@@ -1,15 +1,14 @@
 const taskRepo = require('../repository/task.repository.ts');
 
-// @ts-ignore
-const getAllTasks = (boardId) => taskRepo.getAllTasks(boardId);
-// @ts-ignore
-const getOneTask = (boardId, taskId) => taskRepo.getOneTask(boardId, taskId);
-// @ts-ignore
-const addTask = (boardId, task) => taskRepo.addTask(boardId, task);
-// @ts-ignore
-const updateTask = (boardId, taskId, task) => taskRepo.updateTask(boardId, taskId, task);
-// @ts-ignore
-const deleteTask = (boardId, taskId) => taskRepo.deleteTask(boardId, taskId);
+const getAllTasksService = (boardId: string) => taskRepo.getAllTasksRepo(boardId);
+
+const getOneTaskService = (boardId: string, taskId: string) => taskRepo.getOneTaskRepo(boardId, taskId);
+
+const addTaskService = (boardId: string, task: string) => taskRepo.addTaskRepo(boardId, task);
+
+const updateTaskService = (boardId: string, taskId: string, task: object) => taskRepo.updateTaskRepo(boardId, taskId, task);
+
+const deleteTaskService = (boardId: string, taskId: string) => taskRepo.deleteTaskRepo(boardId, taskId);
 
 
-module.exports = { getAllTasks, getOneTask, addTask, updateTask, deleteTask};
+module.exports = { getAllTasksService, getOneTaskService, addTaskService, updateTaskService, deleteTaskService};
