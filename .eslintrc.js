@@ -48,6 +48,7 @@ module.exports = {
     'tsdoc/syntax': 'error',
     '@typescript-eslint/no-explicit-any': ['error'],
     'lines-between-class-members': 'off',
-    '@typescript-eslint/no-var-requires': 0
+    '@typescript-eslint/no-var-requires': 0,
+    "no-unused-vars": "off"
   }
 };

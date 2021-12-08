@@ -9,11 +9,9 @@ const getOneUser = async (req: { params: { userId: string; }; }) => {
     return userService.returnUserWithoutPass(userService.getOneUserService(userId));
 };
 
-// @ts-ignore
-const addUser = async (req, res) => {
-    res.status(201);
+const addUser = async (req: { body: object; }, res: { status: (arg0: number) => void}) => {
+    res.status(201)
     return userService.returnUserWithoutPass(userService.addUserService(req.body));
-
 };
 
 // @ts-ignore
