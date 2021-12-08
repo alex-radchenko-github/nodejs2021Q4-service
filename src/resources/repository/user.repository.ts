@@ -7,8 +7,7 @@ const repo = require('./memory.repository.ts');
 const getAll = () => repo.data.user;
 
 
-// @ts-ignore
-const getOne = userId => repo.data.user.filter(x => x.id === userId)[0];
+const getOne = (userId: string) => repo.data.user.filter((x: { id: string; }) => x.id === userId)[0];
 
 // @ts-ignore
 function addUser(user) {

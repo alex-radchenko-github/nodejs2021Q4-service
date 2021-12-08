@@ -4,10 +4,9 @@ const getAllUsers = async () => userService.getAllUsersService().map((x: object)
 
 
 
-// @ts-ignore
-const getOneUser = async (req) => {
+const getOneUser = async (req: { params: { userId: string; }; }) => {
     const {userId} = req.params;
-    return userService.returnUserWithoutPass(userService.getOneUser(userId));
+    return userService.returnUserWithoutPass(userService.getOneUserService(userId));
 };
 
 // @ts-ignore
