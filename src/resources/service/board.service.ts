@@ -1,17 +1,17 @@
 // @ts-ignore
-const usersRepo = require('../repository/board.repository.ts');
+const boardRepo = require('../repository/board.repository.ts');
 
 
 // @ts-ignore
-const getAllBoards = () => usersRepo.getAllBoards();
+const getAllBoards = () => boardRepo.getAllBoards();
 // @ts-ignore
-const getOneBoard = (boardId) => usersRepo.getOneBoard(boardId);
+const getOneBoard = (boardId) => boardRepo.getOneBoard(boardId);
 // @ts-ignore
-const addBoard = (board) => usersRepo.addBoard(board);
+const addBoard = (board) => boardRepo.addBoard(board);
 // @ts-ignore
-const updateBoard = (boardId, body) => usersRepo.updateBoard(boardId, body);
+const updateBoard = (boardId, body) => boardRepo.updateBoard(boardId, body);
 // @ts-ignore
-const deleteBoard = (boardId) => usersRepo.deleteBoard(boardId);
+const deleteBoard = (boardId) => boardRepo.deleteBoard(boardId);
 
 
 module.exports = { getAllBoards, getOneBoard, addBoard, updateBoard, deleteBoard };

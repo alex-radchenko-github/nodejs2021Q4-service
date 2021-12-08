@@ -1,8 +1,7 @@
-// @ts-ignore
 const usersRepo = require('../repository/user.repository.ts');
 
-// @ts-ignore
-const getAllUsers = () => usersRepo.getAll();
+
+const getAllUsersService = () => usersRepo.getAll();
 // @ts-ignore
 const getOneUser = (userId) => usersRepo.getOne(userId);
 // @ts-ignore
@@ -17,4 +16,4 @@ function returnUserWithoutPass(user) {
     return { id, name, login };
 }
 
-module.exports = { getAllUsers, getOneUser ,addUser, returnUserWithoutPass, updateUser, deleteUser};
+module.exports = { getAllUsersService, getOneUser ,addUser, returnUserWithoutPass, updateUser, deleteUser};

@@ -1,7 +1,7 @@
 const userService = require('../service/user.service.ts');
 
-// @ts-ignore
-const getAllUsers = async () => userService.getAllUsers().map(x => userService.returnUserWithoutPass(x));
+const getAllUsers = async () => userService.getAllUsersService().map((x: object) => userService.returnUserWithoutPass(x));
+
 
 
 // @ts-ignore

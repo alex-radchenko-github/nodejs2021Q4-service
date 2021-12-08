@@ -1,4 +1,4 @@
-const data: object = {
+const data = {
     user: [
         {
             id: '17af78ee-3c30-4ec1-a849-53907e37199d',

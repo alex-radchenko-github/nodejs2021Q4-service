@@ -1,16 +1,17 @@
 // @ts-ignore
 const {v4: uuidv4} = require("uuid");
-// @ts-ignore
-const usersRepo = require('./memory.repository.ts');
 
 // @ts-ignore
-const getAllBoards = () => usersRepo.data.boards;
+const repo = require('./memory.repository.ts');
+
+// @ts-ignore
+const getAllBoards = () => repo.data.boards;
 
 // @ts-ignore
 function getOneBoard(boardId) {
 
     // @ts-ignore
-    return usersRepo.data.boards.filter(x => x.id === boardId);
+    return repo.data.boards.filter(x => x.id === boardId);
 }
 
 // @ts-ignore
@@ -22,23 +23,23 @@ function addBoard(board) {
         newBoard.columns[i].id = uuidv4()
     }
 
-    usersRepo.data.boards.push(newBoard);
+    repo.data.boards.push(newBoard);
     return newBoard;
 }
 
 // @ts-ignore
 function deleteBoard(boardId) {
     let boardIndex = null;
-    for (let i = 0; i < usersRepo.data.boards.length; i += 1) {
-        if (usersRepo.data.boards[i].id === boardId) {
+    for (let i = 0; i < repo.data.boards.length; i += 1) {
+        if (repo.data.boards[i].id === boardId) {
             boardIndex = i;
             break;
         }
     }
-    usersRepo.data.boards.splice(boardIndex, 1);
+    repo.data.boards.splice(boardIndex, 1);
 
     // @ts-ignore
-    usersRepo.data.task = usersRepo.data.task.filter(x => x.boardId !== boardId)
+    repo.data.task = repo.data.task.filter(x => x.boardId !== boardId)
 
 
 }
@@ -47,8 +48,8 @@ function deleteBoard(boardId) {
 function updateBoard(boardId, body) {
 
     let boardIndex = null;
-    for (let i = 0; i < usersRepo.data.boards.length; i += 1) {
-        if (usersRepo.data.boards[i].id === boardId) {
+    for (let i = 0; i < repo.data.boards.length; i += 1) {
+        if (repo.data.boards[i].id === boardId) {
             boardIndex = i;
             break;
         }
@@ -60,7 +61,7 @@ function updateBoard(boardId, body) {
     };
 
     // @ts-ignore
-    usersRepo.data.boards[boardIndex] = {...updatedBoard};
+    repo.data.boards[boardIndex] = {...updatedBoard};
     return updatedBoard;
 }
 

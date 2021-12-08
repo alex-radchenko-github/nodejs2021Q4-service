@@ -44,7 +44,6 @@ const addUserValidation = {
     }
 }
 
-// @ts-ignore
 const userRoutes = [
     {
         method: 'GET',
