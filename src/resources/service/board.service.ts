@@ -1,15 +1,17 @@
 const boardRepo = require('../repository/board.repository.ts');
 
 
+
 const getAllBoardsService = () => boardRepo.getAllBoardsRepo();
-// @ts-ignore
-const getOneBoard = (boardId) => boardRepo.getOneBoard(boardId);
-// @ts-ignore
-const addBoard = (board) => boardRepo.addBoard(board);
-// @ts-ignore
-const updateBoard = (boardId, body) => boardRepo.updateBoard(boardId, body);
-// @ts-ignore
-const deleteBoard = (boardId) => boardRepo.deleteBoard(boardId);
+
+const getOneBoardService = (boardId: string) => boardRepo.getOneBoardRepo(boardId);
+
+const addBoardService = (board: {id: string, columns: [{id: string}]}) => boardRepo.addBoardRepo(board);
+
+const updateBoardService = (boardId: string, body: object) => boardRepo.updateBoardRepo(boardId, body);
+
+const deleteBoardService = (boardId: string) => boardRepo.deleteBoardRepo(boardId);
 
 
-module.exports = { getAllBoardsService, getOneBoard, addBoard, updateBoard, deleteBoard };
+
+module.exports = { getAllBoardsService, getOneBoardService, addBoardService, updateBoardService, deleteBoardService };

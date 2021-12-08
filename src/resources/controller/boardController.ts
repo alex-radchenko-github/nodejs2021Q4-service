@@ -5,38 +5,34 @@ const getAllBoards = async () =>
     boardService.getAllBoardsService()
 
 
-// @ts-ignore
-const getOneBoard = async (req, res) => {
+const getOneBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
     const {boardId} = req.params;
-    if (!boardService.getOneBoard(boardId)[0]) {
+    if (!boardService.getOneBoardService(boardId)[0]) {
         res.status(404);
         res.send('no ID');
 
     } else {
-        const answer = await boardService.getOneBoard(boardId)[0];
+        const answer = await boardService.getOneBoardService(boardId)[0];
         res.send(answer);
     }
 
 };
 
-// @ts-ignore
-const addBoard = async (req, res) => {
+const addBoard = async (req: { body: object; }, res: { status: (arg0: number) => void; }) => {
     res.status(201);
-    return boardService.addBoard(req.body);
+    return boardService.addBoardService(req.body);
 };
 
-// @ts-ignore
-const updateBoard = async (req, res) => {
+const updateBoard = async (req: { params: { boardId: string; }; body: object; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
     res.status(200);
-    return boardService.updateBoard(boardId, req.body);
+    return boardService.updateBoardService(boardId, req.body);
 };
 
-// @ts-ignore
-const deleteBoard = async (req, res) => {
+const deleteBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
     res.status(204);
-    return boardService.deleteBoard(boardId);
+    return boardService.deleteBoardService(boardId);
 };
 
 module.exports = {

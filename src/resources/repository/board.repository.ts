@@ -1,54 +1,46 @@
-// @ts-ignore
-const {v4: uuidv4} = require("uuid");
+const {v4: uuidv4ForBoard} = require("uuid");
 
-// @ts-ignore
-const repo = require('./memory.repository.ts');
+const repoForBoard = require('./memory.repository.ts');
 
-const getAllBoardsRepo = () => repo.data.boards;
+const getAllBoardsRepo = () => repoForBoard.data.boards;
 
-// @ts-ignore
-function getOneBoard(boardId) {
-
-    // @ts-ignore
-    return repo.data.boards.filter(x => x.id === boardId);
+function getOneBoardRepo(boardId: string) {
+    return repoForBoard.data.boards.filter((x: { id: string; }) => x.id === boardId);
 }
 
-// @ts-ignore
-function addBoard(board) {
+function addBoardRepo(board: {id: string, columns: [{id: string}]}) {
     const newBoard = board;
-    newBoard.id = uuidv4();
+    newBoard.id = uuidv4ForBoard();
 
     for (let i = 0; i < newBoard.columns.length; i += 1) {
-        newBoard.columns[i].id = uuidv4()
+
+        newBoard.columns[i].id = uuidv4ForBoard()
     }
 
-    repo.data.boards.push(newBoard);
+    repoForBoard.data.boards.push(newBoard);
     return newBoard;
 }
 
-// @ts-ignore
-function deleteBoard(boardId) {
+function deleteBoardRepo(boardId: string) {
     let boardIndex = null;
-    for (let i = 0; i < repo.data.boards.length; i += 1) {
-        if (repo.data.boards[i].id === boardId) {
+    for (let i = 0; i < repoForBoard.data.boards.length; i += 1) {
+        if (repoForBoard.data.boards[i].id === boardId) {
             boardIndex = i;
             break;
         }
     }
-    repo.data.boards.splice(boardIndex, 1);
+    repoForBoard.data.boards.splice(boardIndex, 1);
 
-    // @ts-ignore
-    repo.data.task = repo.data.task.filter(x => x.boardId !== boardId)
+    repoForBoard.data.task = repoForBoard.data.task.filter((x: { boardId: string; }) => x.boardId !== boardId)
 
 
 }
 
-// @ts-ignore
-function updateBoard(boardId, body) {
+function updateBoardRepo(boardId: string, body: object) {
 
-    let boardIndex = null;
-    for (let i = 0; i < repo.data.boards.length; i += 1) {
-        if (repo.data.boards[i].id === boardId) {
+    let boardIndex = 0;
+    for (let i = 0; i < repoForBoard.data.boards.length; i += 1) {
+        if (repoForBoard.data.boards[i].id === boardId) {
             boardIndex = i;
             break;
         }
@@ -59,15 +51,14 @@ function updateBoard(boardId, body) {
 
     };
 
-    // @ts-ignore
-    repo.data.boards[boardIndex] = {...updatedBoard};
+    repoForBoard.data.boards[boardIndex] = {...updatedBoard};
     return updatedBoard;
 }
 
 module.exports = {
     getAllBoardsRepo,
-    getOneBoard,
-    addBoard,
-    deleteBoard,
-    updateBoard,
+    getOneBoardRepo,
+    addBoardRepo,
+    deleteBoardRepo,
+    updateBoardRepo,
 };
