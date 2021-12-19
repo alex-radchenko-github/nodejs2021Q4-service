@@ -32,7 +32,7 @@ const updateTask = async (req: { params: { boardId: string; taskId: string; }; b
 const deleteTask = async (req: { params: { boardId: string; taskId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId, taskId} = req.params;
     res.status(204);
-    return taskService.deleteTaskService(boardId, taskId);
+    taskService.deleteTaskService(boardId, taskId);
 };
 
 module.exports = {

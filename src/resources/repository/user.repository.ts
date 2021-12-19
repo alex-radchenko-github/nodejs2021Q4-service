@@ -2,18 +2,18 @@ const {v4: uuidv4ForUser} = require("uuid");
 
 const repoForUser = require('./memory.repository.ts');
 
-const getAll = () => repoForUser.data.user;
+const getAll =  (): object => repoForUser.data.user;
 
 const getOne = (userId: string) => repoForUser.data.user.filter((x: { id: string; }) => x.id === userId)[0];
 
-function addUserRepo(user: {id: string}) {
+function addUserRepo(user: {id: string}): object {
     const newUser = user;
     newUser.id = uuidv4ForUser();
     repoForUser.data.user.push(newUser);
     return newUser;
 }
 
-function updateUserRepo(userId: string, body: object) {
+function updateUserRepo(userId: string, body: object): object {
 
     let userIndex: number = 0;
     for (let i = 0; i < repoForUser.data.user.length; i += 1) {
@@ -32,7 +32,7 @@ function updateUserRepo(userId: string, body: object) {
     return updatedUser;
 }
 
-function deleteUserRepo(userId: string) {
+function deleteUserRepo(userId: string): void {
     let userIndex = null;
     for (let i = 0; i < repoForUser.data.user.length; i += 1) {
         if (repoForUser.data.user[i].id === userId) {

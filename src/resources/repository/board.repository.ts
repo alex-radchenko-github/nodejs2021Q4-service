@@ -2,9 +2,9 @@ const {v4: uuidv4ForBoard} = require("uuid");
 
 const repoForBoard = require('./memory.repository.ts');
 
-const getAllBoardsRepo = () => repoForBoard.data.boards;
+const getAllBoardsRepo = (): object => repoForBoard.data.boards;
 
-function getOneBoardRepo(boardId: string) {
+function getOneBoardRepo(boardId: string): object {
     return repoForBoard.data.boards.filter((x: { id: string; }) => x.id === boardId);
 }
 

@@ -23,7 +23,7 @@ const updateUser = async (req: { params: { userId: string; }; body: object; }, r
 const deleteUser = async (req: { params: { userId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {userId} = req.params;
     res.status(204);
-    return userService.deleteUserService(userId);
+    userService.deleteUserService(userId);
 };
 
 module.exports = {
