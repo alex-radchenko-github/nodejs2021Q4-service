@@ -3,7 +3,7 @@ const taskRepo = require('../repository/task.repository.ts');
 /**
  * Returns Task's list by boardId
  * @param boardId - boar's id
- * @returns get a board by id
+ * @returns a board by id
  */
 const getAllTasksService = (boardId: string): object => taskRepo.getAllTasksRepo(boardId);
 

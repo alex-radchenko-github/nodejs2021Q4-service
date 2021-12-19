@@ -15,15 +15,15 @@ const getAllBoardsService = (): object => boardRepo.getAllBoardsRepo();
 const getOneBoardService = (boardId: string): { id: string, title: string, columns: { id:string, title:string, order:number } } => boardRepo.getOneBoardRepo(boardId);
 
 /**
- * Returns a board with id
+ * add a new board
  * @param board - object with a new board
- * @returns  a new  board with id
+ * @returns  a new board
  */
-const addBoardService = (board: { id: string, columns: [{ id: string }] }): object => boardRepo.addBoardRepo(board);
+const addBoardService = (board: object): object => boardRepo.addBoardRepo(board);
 
 /**
  * update a board with id
- * @param body - object with a new board
+ * @param body - object with an update board
  * @param boardId - board's id
  * @returns  an updated  board with id
  */

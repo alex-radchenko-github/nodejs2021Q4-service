@@ -1,9 +1,20 @@
 const boardService = require('../service/board.service.ts');
 
+/**
+ * Returns board's list
+ * @returns board's list
+ */
 
 const getAllBoards = async () =>
     boardService.getAllBoardsService()
 
+/**
+ * Returns a board by id
+ * @param req - server request
+ * @param res - server response
+ * @returns Returns a board by id if the board is present
+ * @returns 404 status code if the board is not present
+ */
 
 const getOneBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
     const {boardId} = req.params;
@@ -18,10 +29,26 @@ const getOneBoard = async (req: { params: { boardId: string; }; }, res: { status
 
 };
 
+/**
+ * add a new board
+ * @param req - server request
+ * @param res - server response
+ * @returns  a new board
+ * @returns  201 status code
+ */
+
 const addBoard = async (req: { body: object; }, res: { status: (arg0: number) => void; }) => {
     res.status(201);
     return boardService.addBoardService(req.body);
 };
+
+/**
+ * update a board with id
+ * @param req - server request
+ * @param res - server response
+ * @returns 200 status code
+ * @returns  an updated  board with id
+ */
 
 const updateBoard = async (req: { params: { boardId: string; }; body: object; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
@@ -29,10 +56,15 @@ const updateBoard = async (req: { params: { boardId: string; }; body: object; },
     return boardService.updateBoardService(boardId, req.body);
 };
 
+/**
+ * Delete a task by id in the board by id
+ * @param req - server request
+ * @param res - server response with status code
+ */
 const deleteBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
     res.status(204);
-    return boardService.deleteBoardService(boardId);
+    boardService.deleteBoardService(boardId);
 };
 
 module.exports = {
