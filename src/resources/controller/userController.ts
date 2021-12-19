@@ -50,9 +50,8 @@ const updateUser = async (req: { params: { userId: string; }; body: object; }, r
  * @returns 204 status code
  */
 const deleteUser = async (req: { params: { userId: string; }; }, res: { status: (arg0: number) => void; }) => {
-    const arg0 = 204
     const {userId} = req.params;
-    res.status(arg0);
+    res.status(204);
     userService.deleteUserService(userId);
 };
 
