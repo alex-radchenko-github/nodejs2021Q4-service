@@ -57,9 +57,10 @@ const updateBoard = async (req: { params: { boardId: string; }; body: object; },
 };
 
 /**
- * Delete a task by id in the board by id
+ * Delete a Board by id
  * @param req - server request
  * @param res - server response with status code
+ * @returns 204 status code
  */
 const deleteBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
