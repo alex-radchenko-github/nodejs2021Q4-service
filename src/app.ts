@@ -25,6 +25,14 @@ app.addHook('preHandler', (req: { body: object; log: { info: (arg0: { body: obje
     done()
 })
 
+app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: string) => void; }; query: string; }, reply: object, done: () => void) => {
+    if (req) {
+        req.log.info({query: req.query}, 'parsed query')
+    }
+    done()
+})
+
+
 // const errorStream = fs.createWriteStream('./logs/only_error.log', {flags: 'a'});
 const outputFilePath = './logs/only_error.log'
 const errorStream = fs.createWriteStream(outputFilePath, {flags: 'a'})
