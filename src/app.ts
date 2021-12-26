@@ -26,7 +26,7 @@ app.addHook('preHandler', (req: { body: object; log: { info: (arg0: { body: obje
 })
 
 app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: string) => void; }; query: string; }, reply: object, done: () => void) => {
-    if (req) {
+    if (req.query) {
         req.log.info({query: req.query}, 'parsed query')
     }
     done()
