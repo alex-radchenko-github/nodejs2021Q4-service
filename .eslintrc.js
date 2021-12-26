@@ -50,6 +50,7 @@ module.exports = {
     'lines-between-class-members': 'off',
     '@typescript-eslint/no-var-requires': 0,
     "no-unused-vars": "off",
-    "@typescript-eslint/no-inferrable-types":0
+    "@typescript-eslint/no-inferrable-types":0,
+    "@typescript-eslint/eslint-disable-next-line":0
   }
 };

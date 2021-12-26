@@ -1,11 +1,14 @@
-// trace, debug, info, warn, error, fatal
+const fs = require("fs");
+const lv = require('./common/logLevels')
 
+const logLevel = 3
+
+// eslint-disable-next-line import/order
 const app = require('fastify')({
-  logger: {
-    level: 'error',
-    file: './logs/error.log'
-  }
-
+    logger: {
+        level: lv.logLevels[logLevel.toString()],
+        file: `./logs/common.log`
+    }
 });
 
 
@@ -16,13 +19,22 @@ const taskRouter = require('./resources/route/taskRouter')
 const routes = [userRouter, boardRouter, taskRouter]
 
 app.addHook('preHandler', (req: { body: object; log: { info: (arg0: { body: object; }, arg1: string) => void; }; }, reply: object, done: () => void) => {
-  if (req.body) {
-    req.log.info({ body: req.body }, 'parsed body')
-  }
-  done()
+    if (req.body) {
+        req.log.info({body: req.body}, 'parsed body')
+    }
+    done()
 })
 
-// trace, debug, info, warn, error, fatal
+// const errorStream = fs.createWriteStream('./logs/only_error.log', {flags: 'a'});
+const outputFilePath = './logs/only_error.log'
+const errorStream = fs.createWriteStream(outputFilePath, {flags: 'a'})
+
+
+app.addHook('onError', (request: object, reply: { raw: { statusCode: string; }; }, error: object, done: () => void) => {
+    errorStream.write(`${Date().toString()}, ${error.toString()}, status code: ${reply.raw.statusCode}\n`);
+    done()
+})
+
 
 // // Example for trace log
 // app.log.trace('Example for trace log');
@@ -44,6 +56,8 @@ app.addHook('preHandler', (req: { body: object; log: { info: (arg0: { body: obje
 
 process.on('uncaughtException', (e) => {
     app.log.fatal(`${e.message}`)
+    errorStream.write(`${Date().toString()}, msg: ${e.message}\n`);
+
 });
 
 // Раскомментировать для uncaughtException
@@ -51,6 +65,7 @@ process.on('uncaughtException', (e) => {
 
 process.on('unhandledRejection', (e) => {
     app.log.fatal(`${e}`)
+    errorStream.write(`${Date().toString()}, msg: ${e}\n`);
 });
 
 // Раскомментировать для unhandledRejection
@@ -58,9 +73,8 @@ process.on('unhandledRejection', (e) => {
 
 
 routes.forEach(r => r.forEach((route: object) => {
-  app.route(route)
+    app.route(route)
 }))
 
 
 module.exports = app;
-
