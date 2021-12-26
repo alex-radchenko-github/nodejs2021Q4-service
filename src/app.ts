@@ -46,12 +46,14 @@ process.on('uncaughtException', (e) => {
     app.log.fatal(`${e.message}`)
 });
 
+// Раскомментировать для uncaughtException
 // throw Error('Oops!');
 
 process.on('unhandledRejection', (e) => {
     app.log.fatal(`${e}`)
 });
 
+// Раскомментировать для unhandledRejection
 // Promise.reject(Error('Oops!'));
 
 
