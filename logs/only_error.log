@@ -1,2 +1,12 @@
 Sun Dec 26 2021 14:37:28 GMT-0500 (Eastern Standard Time), SyntaxError: Unexpected end of JSON input, status code: 400
 Sun Dec 26 2021 14:52:49 GMT-0500 (Eastern Standard Time), msg: parsQuery hook not supported!
+Sun Dec 26 2021 15:32:26 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:32:27 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:32:28 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:32:30 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:32:33 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:34:20 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:34:21 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:34:23 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:34:24 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
+Sun Dec 26 2021 15:34:25 GMT-0500 (Eastern Standard Time), TypeError: req.query.toString is not a function, status code: 500
