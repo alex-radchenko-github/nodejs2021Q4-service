@@ -79,7 +79,6 @@ process.on('unhandledRejection', (e) => {
 // Раскомментировать для unhandledRejection
 // Promise.reject(Error('Oops!'));
 
-
 routes.forEach(r => r.forEach((route: object) => {
     app.route(route)
 }))
