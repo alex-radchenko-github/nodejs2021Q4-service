@@ -30,6 +30,7 @@ For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
 ## Running application with Docker
 
+After git clone {repository URL}
 ```
 npm install
 docker-compose up --build
