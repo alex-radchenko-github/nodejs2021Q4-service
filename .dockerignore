@@ -1,8 +1,6 @@
 node_modules.nosync
 node_modules
 .gitignore
-.db
-db
 .idea
 .github
 .vscode
