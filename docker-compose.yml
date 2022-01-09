@@ -11,7 +11,7 @@ services:
     command: npm run start
     depends_on:
       - postgres
-    restart: always
+    restart: on-failure
     networks:
       - user-defined-bridge
   postgres:
@@ -25,7 +25,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - db/:/var/lib/postgresql/data/
-    restart: always
+    restart: on-failure
     networks:
       - user-defined-bridge
 
