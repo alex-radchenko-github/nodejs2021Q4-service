@@ -4,6 +4,7 @@ services:
     container_name: main
     build: .
     volumes:
+      - .:/app
       - logs/:/app/logs/
 
     ports:
