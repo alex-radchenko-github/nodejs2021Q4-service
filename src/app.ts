@@ -83,5 +83,4 @@ routes.forEach(r => r.forEach((route: object) => {
     app.route(route)
 }))
 
-
 module.exports = app;
