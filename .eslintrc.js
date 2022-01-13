@@ -1,8 +1,8 @@
 module.exports = {
-  root: true,
   env: {
-    es2020: true,
-    jasmine: true,
+    browser: true,
+    commonjs: true,
+    es2021: true,
     jest: true,
     node: true,
   },

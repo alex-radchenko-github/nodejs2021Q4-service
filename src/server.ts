@@ -1,4 +1,5 @@
-const {PORT} = require('./common/config.ts');
+import { PORT } from './common/config';
+
 const application = require('./app.ts');
 
 
