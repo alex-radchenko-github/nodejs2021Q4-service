@@ -5,21 +5,21 @@
   "username": "postgres",
   "password": "postgres",
   "database": "nodejs2021Q4Service",
-  "synchronize": true,
+  "synchronize": false,
   "logging": false,
   "entities": [
-    "app/src/entity/*.ts"
+    "src/entity/*.ts"
   ],
   "migrations": [
-    "app/src/migration/**/*.ts"
+    "src/migration/**/*.ts"
   ],
   "subscribers": [
-    "app/src/subscriber/**/*.ts"
+    "src/subscriber/**/*.ts"
   ],
   "cli": {
-    "entitiesDir": "app/src/entity",
-    "migrationsDir": "app/src/migration",
-    "subscribersDir": "app/src/subscriber"
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
   }
 }
 
