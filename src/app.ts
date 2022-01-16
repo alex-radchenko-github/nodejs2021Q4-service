@@ -76,6 +76,7 @@ process.on('unhandledRejection', (e) => {
     errorStream.write(`${Date().toString()}, msg: ${e}\n`);
 });
 
+
 // Раскомментировать для unhandledRejection
 // Promise.reject(Error('Oops!'));
 

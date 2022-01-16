@@ -22,8 +22,12 @@ const getAllTasks = async (req: { params: { boardId: string; }; }, res: { status
  * @returns 404 status code if the task by id from board by is not present
  */
 const getOneTask = async (req: { params: { boardId: string; taskId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
+
+    // const {boardId, taskId} = req.params;
+    // return taskService.getOneTaskService(boardId, taskId)
+
     const {boardId, taskId} = req.params;
-    if (!taskService.getOneTaskService(boardId, taskId)) {
+    if (!await taskService.getOneTaskService(boardId, taskId)) {
         res.status(404);
         return res.send('no ID');
     }
@@ -70,7 +74,7 @@ const updateTask = async (req: { params: { boardId: string; taskId: string; }; b
 const deleteTask = async (req: { params: { boardId: string; taskId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId, taskId} = req.params;
     res.status(204);
-    taskService.deleteTaskService(boardId, taskId);
+    await taskService.deleteTaskService(boardId, taskId);
 };
 
 module.exports = {

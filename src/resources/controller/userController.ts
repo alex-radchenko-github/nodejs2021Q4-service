@@ -4,7 +4,8 @@ const userService = require('../service/user.service.ts');
  * Returns users list
  * @returns Users list
  */
-const getAllUsers = async () => userService.getAllUsersService().map((x: object) => userService.returnUserWithoutPass(x));
+// const getAllUsers = async () => userService.getAllUsersService().map((x: object) => userService.returnUserWithoutPass(x));
+const getAllUsers = async () => userService.getAllUsersService();
 
 /**
  * Get a user by id
@@ -14,7 +15,7 @@ const getAllUsers = async () => userService.getAllUsersService().map((x: object)
 
 const getOneUser = async (req: { params: { userId: string; }; }) => {
     const {userId} = req.params;
-    return userService.returnUserWithoutPass(userService.getOneUserService(userId));
+    return userService.getOneUserService(userId);
 };
 
 /**
@@ -27,7 +28,7 @@ const getOneUser = async (req: { params: { userId: string; }; }) => {
 const addUser = async (req: { body: object; }, res: { status: (arg0: number) => void; }) => {
 
     res.status(201)
-    return userService.returnUserWithoutPass(userService.addUserService(req.body));
+    return userService.addUserService(req.body);
 };
 
 /**
@@ -40,7 +41,7 @@ const addUser = async (req: { body: object; }, res: { status: (arg0: number) => 
 const updateUser = async (req: { params: { userId: string; }; body: object; }, res: { status: (arg0: number) => void; }) => {
     const {userId} = req.params;
     res.status(200);
-    return userService.returnUserWithoutPass(userService.updateUserService(userId, req.body));
+    return userService.updateUserService(userId, req.body);
 };
 
 /**
@@ -52,7 +53,7 @@ const updateUser = async (req: { params: { userId: string; }; body: object; }, r
 const deleteUser = async (req: { params: { userId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {userId} = req.params;
     res.status(204);
-    userService.deleteUserService(userId);
+    await userService.deleteUserService(userId);
 };
 
 module.exports = {

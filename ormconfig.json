@@ -1,0 +1,25 @@
+{
+  "type": "postgres",
+  "host": "postgres",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "nodejs2021Q4Service",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "app/src/entity/*.ts"
+  ],
+  "migrations": [
+    "app/src/migration/**/*.ts"
+  ],
+  "subscribers": [
+    "app/src/subscriber/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "app/src/entity",
+    "migrationsDir": "app/src/migration",
+    "subscribersDir": "app/src/subscriber"
+  }
+}
+

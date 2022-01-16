@@ -50,7 +50,10 @@
     "fastify": "^3.24.1",
     "middie": "^5.3.0",
     "uuid": "8.3.2",
-    "yamljs": "0.3.0"
+    "yamljs": "0.3.0",
+    "typeorm": "0.2.41",
+    "pg": "^8.4.0",
+    "reflect-metadata": "^0.1.10"
   },
   "devDependencies": {
     "@types/node": "^16.11.12",

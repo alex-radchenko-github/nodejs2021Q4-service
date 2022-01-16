@@ -10,6 +10,7 @@ const getBoardValidation = {
             properties: {
                 id: {type: 'string'},
                 title: {type: 'string'},
+                // todo проверить
                 columns: {type: 'array'}
             }
         }

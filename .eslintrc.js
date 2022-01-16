@@ -51,6 +51,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     "no-unused-vars": "off",
     "@typescript-eslint/no-inferrable-types":0,
-    "@typescript-eslint/eslint-disable-next-line":0
-  }
-};
+    "@typescript-eslint/eslint-disable-next-line":0,
+    "import/no-import-module-exports":0,
+    "no-await-in-loop":0
+}};
