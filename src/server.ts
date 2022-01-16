@@ -21,7 +21,7 @@ const start = async () => {
         database: "nodejs2021Q4Service",
         entities: ["src/entity/*.ts"],
         migrations: ["src/migration/**/*.ts"],
-        synchronize: false,
+        synchronize: true,
         logging: false
     });
 
