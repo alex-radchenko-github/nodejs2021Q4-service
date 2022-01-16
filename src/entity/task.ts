@@ -29,12 +29,6 @@ export class Task extends BaseEntity {
     @Column({nullable: true})
     columnId: string;
 
-    // @ManyToOne(() => User, user => user.tasks)
-    // user: User;
-    //
-    // @ManyToOne(() => Board, board => board.tasks)
-    // board: User;
-    //
-    // @ManyToOne(() => Columndb, column => column.columns)
-    // column: User;
+
+
 }

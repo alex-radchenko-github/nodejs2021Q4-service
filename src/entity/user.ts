@@ -1,4 +1,5 @@
-import {BaseEntity, Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+// import {Board} from "./board";
 // import {Task} from "./task";
 
 
@@ -21,7 +22,7 @@ export class User extends BaseEntity{
 
     password: string;
 
-    // @OneToMany(() => Task, task => task.user)
-    // tasks: Task[];
+    @ManyToOne(() => User, (user) => user.id)
+    user: User;
 
 }

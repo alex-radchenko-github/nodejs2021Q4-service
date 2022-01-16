@@ -1,4 +1,4 @@
-import {BaseEntity, Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
 // import {Task} from "./task";
 
 
@@ -22,10 +22,7 @@ export class Columndb extends BaseEntity {
     linkboard: string;
 
 
-    // @ManyToOne(() => Board, board => board.columnsr)
-    // board: Board;
-
-    // @OneToMany(() => Task, task => task.column)
-    // columns: Task[];
+    @ManyToOne(() => Columndb, (column) => column.id)
+    column: Columndb;
 
 }
