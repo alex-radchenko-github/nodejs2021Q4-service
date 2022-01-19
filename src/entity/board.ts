@@ -12,6 +12,7 @@ export class Board extends BaseEntity{
 
     title: string;
 
+
     @ManyToOne(() => Board, (board) => board.id)
     board: Board;
 
