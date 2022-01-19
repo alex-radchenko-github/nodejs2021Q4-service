@@ -37,7 +37,8 @@ docker-compose up --build
 ```
 
 ## Working with TypeORM migration
-After changes:
+
+Mskung new migration after changes:
 1. In the .env file : TYPEORM_HOST = localhost
 ```
 docker-compose down
