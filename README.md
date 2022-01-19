@@ -49,6 +49,7 @@ docker-compose up --build
 npm run generate
 ```
 The new migration file should appear in the folder "src/migration"
+
 3. In the .env file : TYPEORM_HOST = postgres
 
 4.
