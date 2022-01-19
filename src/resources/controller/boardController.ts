@@ -18,7 +18,6 @@ const getAllBoards = async () =>
 
 const getOneBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
     const {boardId} = req.params;
-    // return boardService.getOneBoardService(boardId)
 
     if (await boardService.getOneBoardService(boardId) === false) {
         res.status(404);

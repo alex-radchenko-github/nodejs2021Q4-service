@@ -7,6 +7,7 @@ dotenv.config({
 
 
 const PORT = Number(process.env.PORT)
+const LL = Number(process.env.LOG_LEVEL)
 const {NODE_ENV} = process.env;
 
 
@@ -19,4 +20,4 @@ const {NODE_ENV} = process.env;
 // };
 
 
-export {PORT, NODE_ENV};
+export {PORT, NODE_ENV, LL};

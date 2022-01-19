@@ -4,7 +4,7 @@ const userService = require('../service/user.service.ts');
  * Returns users list
  * @returns Users list
  */
-// const getAllUsers = async () => userService.getAllUsersService().map((x: object) => userService.returnUserWithoutPass(x));
+
 const getAllUsers = async () => userService.getAllUsersService();
 
 /**

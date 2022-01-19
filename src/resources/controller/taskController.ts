@@ -23,9 +23,6 @@ const getAllTasks = async (req: { params: { boardId: string; }; }, res: { status
  */
 const getOneTask = async (req: { params: { boardId: string; taskId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
 
-    // const {boardId, taskId} = req.params;
-    // return taskService.getOneTaskService(boardId, taskId)
-
     const {boardId, taskId} = req.params;
     if (!await taskService.getOneTaskService(boardId, taskId)) {
         res.status(404);

@@ -5,7 +5,7 @@ const boardRepo = require('../repository/board.repository.ts');
  * Returns board's list
  * @returns board's list
  */
-// const getAllBoardsService = (): object => boardRepo.getAllBoardsRepo();
+
 async function getAllBoardsService() {
     return boardRepo.getAllBoardsRepo()
 
@@ -15,7 +15,7 @@ async function getAllBoardsService() {
  * @param boardId - board's id
  * @returns Returns a board by id
  */
-// const getOneBoardService = (boardId: string) => boardRepo.getOneBoardRepo(boardId);
+
 async function getOneBoardService(boardId: string) {
     return boardRepo.getOneBoardRepo(boardId)
 }
@@ -24,7 +24,7 @@ async function getOneBoardService(boardId: string) {
  * @param board - object with a new board
  * @returns  a new board
  */
-// const addBoardService = (board: object): object => boardRepo.addBoardRepo(board);
+
 async function addBoardService(board: object) {
     return boardRepo.addBoardRepo(board)
 }
@@ -35,7 +35,7 @@ async function addBoardService(board: object) {
  * @param boardId - board's id
  * @returns  an updated  board with id
  */
-// const updateBoardService = (boardId: string, body: object): object => boardRepo.updateBoardRepo(boardId, body);
+
 
 async function updateBoardService(boardId: string, body: object) {
     return boardRepo.updateBoardRepo(boardId, body)
@@ -44,7 +44,7 @@ async function updateBoardService(boardId: string, body: object) {
  * Delete a task by id in the board by id
  * @param boardId - user's id
  */
-// const deleteBoardService = (boardId: string): void => boardRepo.deleteBoardRepo(boardId);
+
 async function deleteBoardService(boardId: string) {
     return boardRepo.deleteBoardRepo(boardId)
 }

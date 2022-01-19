@@ -13,14 +13,13 @@ async function getAll() {
     return userRepository.find({select: ["id", "name", "login"]})
 }
 
-// const getAll =  (): object => repoForUser.data.user;
 
 /**
  * Get a user by id
  * @param userId - user id
  * @returns a user by id
  */
-// const getOne = (userId: string) => repoForUser.data.user.filter((x: { id: string; }) => x.id === userId)[0];
+
 async function getOne(userId: string) {
     const userRepository = await getRepository(User)
     return userRepository.findOne({id: userId})
@@ -73,7 +72,7 @@ async function deleteUserRepo(userid: string) {
         });
     for (let i = 0; i < tasksDeleteUser.length; i+=1) {
 
-        // eslint-disable-next-line no-await-in-loop
+
         const userRepository = await getRepository(Task)
         await userRepository.update(tasksDeleteUser[i].id, {userId: null})
 
@@ -81,21 +80,6 @@ async function deleteUserRepo(userid: string) {
     return aa
 
 
-    // let userIndex = null;
-    // for (let i = 0; i < repoForUser.data.user.length; i += 1) {
-    //     if (repoForUser.data.user[i].id === userId) {
-    //         userIndex = i;
-    //         break;
-    //     }
-    // }
-    //
-    // repoForUser.data.user.splice(userIndex, 1);
-    //
-    // for (let i = 0; i < repoForUser.data.task.length; i += 1) {
-    //     if (repoForUser.data.task[i].userId === userId) {
-    //         repoForUser.data.task[i].userId = null
-    //     }
-    // }
 
 }
 

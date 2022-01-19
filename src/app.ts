@@ -1,12 +1,9 @@
 const fs = require("fs");
-const lv = require('./common/logLevels')
 
-const logLevel = 3
-
-// eslint-disable-next-line import/order
 const app = require('fastify')({
     logger: {
-        level: lv.logLevels[logLevel.toString()],
+        // level: lv.logLevels[process.env.LOG_LEVEL],
+        level: 'info',
         file: `./logs/common.log`
     }
 });
@@ -33,7 +30,6 @@ app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: 
 })
 
 
-// const errorStream = fs.createWriteStream('./logs/only_error.log', {flags: 'a'});
 const outputFilePath = './logs/only_error.log'
 const errorStream = fs.createWriteStream(outputFilePath, {flags: 'a'})
 

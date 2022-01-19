@@ -14,7 +14,6 @@ async function getAllTasksRepo(brdId: string) {
             where: {boardId: brdId}
         });
 
-    // return memoryRepo.data.task.filter((x: { boardId: string; }) => x.boardId === brdId)
 }
 
 
@@ -25,8 +24,7 @@ async function getAllTasksRepo(brdId: string) {
  * @returns the new tack
  */
 async function addTaskRepo(boardId: string, task: object) {
-    // console.log(task)
-    // return boardId
+
 
     const newTask = await getRepository(Task).insert(task);
 
@@ -36,22 +34,8 @@ async function addTaskRepo(boardId: string, task: object) {
         boardId
     })
 
-
     return getRepository(Task).findOne(newTask.identifiers[0].id);
 
-
-    // const newUser = new User()
-    // newUser.login = user.login
-    // newUser.password = user.password
-    // newUser.name = user.name
-    // await newUser.save()
-    // return newUser
-
-    // const newTask = task;
-    // newTask.id = uuidv4ForTask();
-    // newTask.boardId = boardId;
-    // memoryRepo.data.task.push(newTask);
-    // return newTask;
 }
 
 /**
@@ -65,14 +49,6 @@ async function getOneTaskRepo(board: string, task: string) {
     const taskRepository = await getRepository(Task)
     return taskRepository.findOne({id: task})
 
-
-    // return getRepository(Task).find(
-    //     {
-    //         where: {boardId: board, id: task}
-    //     });
-
-
-    // return memoryRepo.data.task.filter((x: { boardId: string; id: string; }) => x.boardId === boardId && x.id === taskId)[0];
 }
 
 /**
@@ -92,22 +68,6 @@ async function updateTaskRepo(boardId: string, taskId: string, task: object) {
     return taskRepository.findOneOrFail({id: taskId})
 
 
-    // let taskIndex = 0;
-    // for (let i = 0; i < memoryRepo.data.task.length; i += 1) {
-    //     if (memoryRepo.data.task[i].boardId === boardId && memoryRepo.data.task[i].id === taskId) {
-    //         taskIndex = i;
-    //         break;
-    //     }
-    // }
-    // const updatedBoard = {
-    //     ...task,
-    //     id: taskId,
-    //     boardId
-    //
-    // };
-    //
-    // memoryRepo.data.task[taskIndex] = {...updatedBoard};
-    // return updatedBoard;
 }
 
 /**
@@ -120,16 +80,6 @@ async function deleteTaskRepo(board: string, task: string) {
     return getRepository(Task).delete({boardId: board, id: task})
 
 
-
-    // let taskIndex = null;
-    // for (let i = 0; i < memoryRepo.data.task.length; i += 1) {
-    //     if (memoryRepo.data.task[i].boardId === boardId && memoryRepo.data.task[i].id === taskId) {
-    //         taskIndex = i;
-    //         break;
-    //     }
-    // }
-    //
-    // memoryRepo.data.task.splice(taskIndex, 1);
 
 }
 

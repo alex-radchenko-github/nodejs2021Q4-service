@@ -88,26 +88,6 @@ async function addBoardRepo(board: { title: string, id: string, columns: { title
     }
 
     return newBoardForReturn
-    // let aaa = {
-    //     id: '1a5bb0d3-f7b0-4f74-9ad4-36dd0b1d10f0',
-    //     title: 'Autotest board',
-    //     columns: [
-    //         { id: '1a5bb0d3-f7b0-4f74-9ad4-36dd0b1d10f1', title: 'Backlog', order: 1 },
-    //         { id: '2a5bb0d3-f7b0-4f74-9ad4-36dd0b1d10f0', title: 'Sprint', order: 2 }
-    //     ]
-    // }
-    // return aaa
-
-    // const newBoard = board;
-    // newBoard.id = uuidv4ForBoard();
-    //
-    // for (let i = 0; i < newBoard.columns.length; i += 1) {
-    //
-    //     newBoard.columns[i].id = uuidv4ForBoard()
-    // }
-    //
-    // repoForBoard.data.boards.push(newBoard);
-    // return newBoard;
 }
 
 /**
@@ -119,17 +99,6 @@ async function deleteBoardRepo(boardid: string) {
 
     await getRepository(Board).delete({id: boardid})
     await getRepository(Task).delete({boardId: boardid})
-
-    // let boardIndex = null;
-    // for (let i = 0; i < repoForBoard.data.boards.length; i += 1) {
-    //     if (repoForBoard.data.boards[i].id === boardId) {
-    //         boardIndex = i;
-    //         break;
-    //     }
-    // }
-    // repoForBoard.data.boards.splice(boardIndex, 1);
-    //
-    // repoForBoard.data.task = repoForBoard.data.task.filter((x: { boardId: string; }) => x.boardId !== boardId)
 
 
 }
@@ -153,24 +122,6 @@ async function updateBoardRepo(boardId: string, body: { title: string, id: strin
     newBoardForReturn.id = boardId
 
     return newBoardForReturn
-    // return boardRepository
-
-
-    // let boardIndex = 0;
-    // for (let i = 0; i < repoForBoard.data.boards.length; i += 1) {
-    //     if (repoForBoard.data.boards[i].id === boardId) {
-    //         boardIndex = i;
-    //         break;
-    //     }
-    // }
-    // const updatedBoard = {
-    //     ...body,
-    //     id: boardId
-    //
-    // };
-    //
-    // repoForBoard.data.boards[boardIndex] = {...updatedBoard};
-    // return updatedBoard;
 }
 
 module.exports = {
