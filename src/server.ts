@@ -2,7 +2,7 @@ import {createConnection} from "typeorm";
 
 import "reflect-metadata";
 
-import {PORT, PGHOST, PGPORT, PGUSER, PGPASSWORD, PGDNNAME, SYNCHRONIZEMODE, LOGGINGMODE} from './common/config';
+import {PORT} from './common/config';
 
 require('dotenv').config()
 
@@ -15,7 +15,7 @@ createConnection()
         // start server
         application.listen(PORT, '0.0.0.0', () => application.log.info(`App is running on http://localhost:${PORT}`));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => application.log.error(error));
 
 
 // const start = async () => {
