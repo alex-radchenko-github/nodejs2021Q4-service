@@ -12,8 +12,9 @@ const app = require('fastify')({
 const userRouter = require('./resources/route/userRouter')
 const boardRouter = require('./resources/route/boardRouter')
 const taskRouter = require('./resources/route/taskRouter')
+const loginRouter = require('./resources/route/loginRouter')
 
-const routes = [userRouter, boardRouter, taskRouter]
+const routes = [userRouter, boardRouter, taskRouter, loginRouter]
 
 app.addHook('preHandler', (req: { body: object; log: { info: (arg0: { body: object; }, arg1: string) => void; }; }, reply: object, done: () => void) => {
     if (req.body) {
@@ -28,6 +29,16 @@ app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: 
     }
     done()
 })
+
+// middleware auth
+app.addHook('preHandler', async (request: any, reply: { send: (arg0: { hello: string; }) => void; }) => {
+    // await console.log("test")
+    // reply.send({ hello: 'world' })
+    // return reply // optional in this case, but it is a good practice
+    console.log("test")
+})
+
+// middleware auth
 
 
 const outputFilePath = './logs/only_error.log'

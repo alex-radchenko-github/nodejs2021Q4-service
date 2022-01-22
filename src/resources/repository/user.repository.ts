@@ -1,7 +1,8 @@
 import {getRepository} from 'typeorm'
 import {User} from "../../entity/user";
 import {Task} from "../../entity/task";
-
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 /**
  * Returns users list
@@ -34,9 +35,12 @@ async function getOne(userId: string) {
 
 
 async function addUserRepo(user: { login: string; password: string; name: string }) {
+
+    const hashPassword = bcrypt.hashSync(user.password, 7);
+
     const newUser = new User()
     newUser.login = user.login
-    newUser.password = user.password
+    newUser.password = hashPassword
     newUser.name = user.name
     await newUser.save()
     return newUser
