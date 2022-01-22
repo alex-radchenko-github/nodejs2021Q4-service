@@ -28,10 +28,9 @@ async function loginRepo(user: { login: string; password: string }) {
     if (!validPassword) {
         return "password mistake"
     }
-    return generateAccessToken(userCandidat.id, userCandidat.login)
+    return {token: generateAccessToken(userCandidat.id, userCandidat.login)}
 
 }
-
 
 module.exports = {
     loginRepo

@@ -2,7 +2,7 @@ const boardController = require('../controller/boardController.ts');
 
 const getBoardValidation = {
     params: {
-        boardId: {type: 'string', format: 'uuid'}
+        boardId: {type: 'string'}
     },
     response: {
         200: {

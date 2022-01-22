@@ -2,14 +2,14 @@ const taskController = require('../controller/taskController.ts');
 
 const getTasksByIdBoardValidation = {
     params: {
-        boardId: {type: 'string', format: 'uuid'}
+        boardId: {type: 'string'}
     }
 }
 
 const getTaskByIdBoardByIdTaskValidation = {
     params: {
-        boardId: {type: 'string', format: 'uuid'},
-        taskId: {type: 'string', format: 'uuid'}
+        boardId: {type: 'string'},
+        taskId: {type: 'string'}
 
     }
 }

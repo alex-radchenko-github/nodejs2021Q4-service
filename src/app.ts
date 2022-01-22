@@ -1,4 +1,5 @@
 const fs = require("fs");
+const jwt = require('jsonwebtoken')
 
 const app = require('fastify')({
     logger: {
@@ -31,11 +32,41 @@ app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: 
 })
 
 // middleware auth
-app.addHook('preHandler', async (request: any, reply: { send: (arg0: { hello: string; }) => void; }) => {
+app.addHook('preHandler', async (req: { url: string; headers: { authorization: string; }; user: any; }, res: { status: (arg0: number) => void; send: (arg0: string) => any; }) => {
     // await console.log("test")
     // reply.send({ hello: 'world' })
     // return reply // optional in this case, but it is a good practice
-    console.log("test")
+    if (req.url !== '/login') {
+        try {
+            const token = req.headers.authorization.split(' ')[1]
+            if (!token) {
+                res.status(401)
+                return res.send('User not authorized');
+
+            }
+            const decodedData = jwt.verify(token, '7')
+            req.user = decodedData
+        } catch (e) {
+
+            res.status(401)
+            return res.send('User not authorized');
+        }
+    } else{
+        console.log(123)
+    }
+
+
+
+
+
+
+    // const token = req.headers.authorization.split(' ')[1]
+    // if (!token) {
+    //     return res.status(403).json({message: "Пользователь не авторизован"})
+    // }
+    // const decodedData = jwt.verify(token, '7')
+    // console.log(decodedData)
+
 })
 
 // middleware auth
