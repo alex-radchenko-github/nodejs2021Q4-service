@@ -33,6 +33,7 @@
     "@typescript-eslint/no-explicit-any": 2,
     "no-use-before-define": 0,
     "eslint-disable-next-line": 0,
-    "treatUndefinedAsUnspecified": false
+    "treatUndefinedAsUnspecified": false,
+    "allowElseIf": false
   }
 }

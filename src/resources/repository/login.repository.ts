@@ -3,13 +3,16 @@ import {User} from "../../entity/user";
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+require('dotenv').config()
+
+
 
 function generateAccessToken(id: string, login: string) {
     const payload = {
         id,
         login
     }
-    return jwt.sign(payload, "7", {expiresIn: "24h"})
+    return jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: "24h"})
 }
 
 /**

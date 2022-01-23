@@ -10,6 +10,9 @@ const app = require('fastify')({
     }
 });
 
+require('dotenv').config()
+
+
 const userRouter = require('./resources/route/userRouter')
 const boardRouter = require('./resources/route/boardRouter')
 const taskRouter = require('./resources/route/taskRouter')
@@ -33,28 +36,26 @@ app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: 
 
 
 //  auth
-app.addHook('preHandler', async (req: { url: string; headers: { authorization: string; }; user: object; }, res: { status: (arg0: number) => object; send: (arg0: string) => object; }) => {
+app.addHook('preHandler', async (req: { url: string; headers: { authorization: string; }; user: string; }, res: { status: (arg0: number) => void; send: (arg0: string) => object; }) => {
 
-
-    if (req.url !== '/login') {
+    if (req.url === "/login" || req.url === "/" || req.url === "/doc") {
+        return false
+    } 
         try {
             const token = req.headers.authorization.split(' ')[1]
             if (!token) {
                 res.status(401)
                 return res.send('User not authorized');
-
             }
-            req.user = jwt.verify(token, '7')
+            req.user = jwt.verify(token, process.env.SECRET_KEY)
         }
         catch (e) {
 
             res.status(401)
             return res.send('User not authorized');
         }
-    }
     return false
 })
-
 //  auth
 
 
