@@ -15,7 +15,6 @@ const getAllUsers = async () => userService.getAllUsersService();
 
 const getOneUser = async (req: { params: { userId: string; }; }) => {
     const {userId} = req.params;
-    console.log(userId)
     return userService.getOneUserService(userId);
 };
 

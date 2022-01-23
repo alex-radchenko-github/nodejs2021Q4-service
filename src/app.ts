@@ -1,6 +1,7 @@
 const fs = require("fs");
 const jwt = require('jsonwebtoken')
 
+
 const app = require('fastify')({
     logger: {
         // level: lv.logLevels[process.env.LOG_LEVEL],
@@ -8,7 +9,6 @@ const app = require('fastify')({
         file: `./logs/common.log`
     }
 });
-
 
 const userRouter = require('./resources/route/userRouter')
 const boardRouter = require('./resources/route/boardRouter')
@@ -31,11 +31,11 @@ app.addHook('preHandler', (req: { log: { info: (arg0: { query: string; }, arg1: 
     done()
 })
 
-// middleware auth
-app.addHook('preHandler', async (req: { url: string; headers: { authorization: string; }; user: any; }, res: { status: (arg0: number) => void; send: (arg0: string) => any; }) => {
-    // await console.log("test")
-    // reply.send({ hello: 'world' })
-    // return reply // optional in this case, but it is a good practice
+
+//  auth
+app.addHook('preHandler', async (req: { url: string; headers: { authorization: string; }; user: object; }, res: { status: (arg0: number) => object; send: (arg0: string) => object; }) => {
+
+
     if (req.url !== '/login') {
         try {
             const token = req.headers.authorization.split(' ')[1]
@@ -44,32 +44,18 @@ app.addHook('preHandler', async (req: { url: string; headers: { authorization: s
                 return res.send('User not authorized');
 
             }
-            const decodedData = jwt.verify(token, '7')
-            req.user = decodedData
-        } catch (e) {
+            req.user = jwt.verify(token, '7')
+        }
+        catch (e) {
 
             res.status(401)
             return res.send('User not authorized');
         }
-    } else{
-        console.log(123)
     }
-
-
-
-
-
-
-    // const token = req.headers.authorization.split(' ')[1]
-    // if (!token) {
-    //     return res.status(403).json({message: "Пользователь не авторизован"})
-    // }
-    // const decodedData = jwt.verify(token, '7')
-    // console.log(decodedData)
-
+    return false
 })
 
-// middleware auth
+//  auth
 
 
 const outputFilePath = './logs/only_error.log'
@@ -121,5 +107,6 @@ process.on('unhandledRejection', (e) => {
 routes.forEach(r => r.forEach((route: object) => {
     app.route(route)
 }))
+
 
 module.exports = app;

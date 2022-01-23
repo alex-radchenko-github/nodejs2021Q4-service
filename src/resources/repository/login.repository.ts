@@ -1,6 +1,5 @@
-import {getRepository} from 'typeorm'
 import {User} from "../../entity/user";
-// import {Task} from "../../entity/task";
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
