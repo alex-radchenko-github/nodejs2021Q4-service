@@ -37,9 +37,9 @@ docker-compose up --build
 ```
 В редких случаях может не запускаться приложение на windows(На mac всё ОК)
 Тогда нужно в docker-compose.yml удалить слешь
-в 8
+в 8 после первого logs
       - logs:/app/logs/
-и 28 строке
+и 28 строке после первого db
       - db:/var/lib/postgresql/data/
 
       
