@@ -35,6 +35,15 @@ After git clone {repository URL}
 npm install
 docker-compose up --build
 ```
+В редких случаях может не запускаться приложение на windows(На mac всё ОК)
+Тогда нужно в docker-compose.yml удалить слешь
+в 8
+      - logs:/app/logs/
+и 28 строке
+      - db:/var/lib/postgresql/data/
+
+      
+ 
 
 ## Working with TypeORM migration
 
