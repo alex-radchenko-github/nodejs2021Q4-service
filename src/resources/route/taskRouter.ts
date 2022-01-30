@@ -1,4 +1,4 @@
-const taskController = require('../controller/taskController.js');
+const taskController = require('../controller/taskController.ts');
 
 const getTasksByIdBoardValidation = {
     params: {

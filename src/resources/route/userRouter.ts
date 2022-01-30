@@ -1,4 +1,4 @@
-const userController = require('../controller/userController.js');
+const userController = require('../controller/userController.ts');
 
 const getUserValidation = {
     params: {
