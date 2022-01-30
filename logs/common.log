@@ -1,4 +1,0 @@
-{"level":30,"time":1640550981718,"pid":5835,"hostname":"Alexanders-MacBook-Pro.local","reqId":"req-4","req":{"method":"POST","url":"/users?name=ferret&color=purple","hostname":"127.0.0.1:4000","remoteAddress":"127.0.0.1","remotePort":56195},"msg":"incoming request"}
-{"level":30,"time":1640550981718,"pid":5835,"hostname":"Alexanders-MacBook-Pro.local","reqId":"req-4","body":{"name":"proident est volup","login":"laboris nulla pariatur nostrud","password":"deserunt aliquip consectetur"},"msg":"parsed body"}
-{"level":30,"time":1640550981718,"pid":5835,"hostname":"Alexanders-MacBook-Pro.local","reqId":"req-4","query":{"name":"ferret","color":"purple"},"msg":"parsed query"}
-{"level":30,"time":1640550981719,"pid":5835,"hostname":"Alexanders-MacBook-Pro.local","reqId":"req-4","res":{"statusCode":201},"responseTime":0.7877920009195805,"msg":"request completed"}
