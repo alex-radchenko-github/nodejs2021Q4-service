@@ -8,6 +8,7 @@ require('dotenv').config()
 
 const application = require('./app.ts');
 
+
 createConnection()
     .then(async () => {
         // await connection.runMigrations();

@@ -2,7 +2,7 @@ const userController = require('../controller/userController.ts');
 
 const getUserValidation = {
     params: {
-        userId: {type: 'string', format: 'uuid'}
+        userId: {type: 'string'}
     },
     response: {
         200: {
