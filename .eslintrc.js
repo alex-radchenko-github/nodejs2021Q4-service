@@ -1,60 +1,24 @@
 module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es2021: true,
-    jest: true,
-    node: true,
-  },
   parser: '@typescript-eslint/parser',
-
   parserOptions: {
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
+    project: 'tsconfig.json',
     sourceType: 'module',
-    ecmaVersion: 2021,
-    createDefaultProgram: true,
-    ecmaFeatures: {
-      impliedStrict: true,
-    },
   },
-  settings: {
-    noInlineConfig: true,
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.ts'],
-      },
-    },
-    node: {
-      allowModules: ['electron'],
-      resolvePaths: [__dirname],
-      tryExtensions: ['.js', '.ts'],
-    },
-  },
-  plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
+  plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
-    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:node/recommended',
-    'airbnb-base',
-    'prettier',
+    'plugin:prettier/recommended',
   ],
+  root: true,
+  env: {
+    node: true,
+    jest: true,
+  },
+  ignorePatterns: ['.eslintrc.js'],
   rules: {
-    'import/extensions': 'off',
-    'linebreak-style': 'off',
-    'node/no-unsupported-features/es-syntax': 'off',
-    'no-underscore-dangle': 'off',
-    'import/prefer-default-export': 'off',
-    'tsdoc/syntax': 'error',
-    '@typescript-eslint/no-explicit-any': ['error'],
-    'lines-between-class-members': 'off',
-    '@typescript-eslint/no-var-requires': 0,
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-inferrable-types":0,
-    "@typescript-eslint/eslint-disable-next-line":0,
-    "import/no-import-module-exports":0,
-    "no-await-in-loop":0,
-    "no-use-before-define":0,
-    "class-methods-use-this":0,
-    "treatUndefinedAsUnspecified": 0
-  }};
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
+};
