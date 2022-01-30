@@ -36,8 +36,27 @@ npm install
 docker-compose up --build
 ```
 
+## Working with TypeORM migration
 
+Mskung new migration after changes:
+1. In the .env file : TYPEORM_HOST = localhost
+```
+docker-compose down
+docker-compose up --build
+```
+2.  
+```
+npm run generate
+```
+The new migration file should appear in the folder "src/migration"
 
+3. In the .env file : TYPEORM_HOST = postgres
+
+4.
+```
+docker-compose down
+docker-compose up --build
+```
 
 ## Testing
 

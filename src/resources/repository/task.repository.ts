@@ -1,14 +1,19 @@
-const {v4: uuidv4ForTask} = require("uuid");
+import {getRepository} from "typeorm";
+import {Task} from "../../entity/task";
 
-const memoryRepo = require('./memory.repository.ts');
+
 
 /**
  * Returns Task's list by board id
  * @param brdId - board id
  * @returns Task's list by board id
  */
-function getAllTasksRepo(brdId: string) {
-    return memoryRepo.data.task.filter((x: { boardId: string; }) => x.boardId === brdId)
+async function getAllTasksRepo(brdId: string) {
+    return getRepository(Task).find(
+        {
+            where: {boardId: brdId}
+        });
+
 }
 
 
@@ -18,23 +23,32 @@ function getAllTasksRepo(brdId: string) {
  * @param task - object with new task
  * @returns the new tack
  */
-function addTaskRepo(boardId: string, task: { id: string, boardId: string }) {
-    const newTask = task;
-    newTask.id = uuidv4ForTask();
-    newTask.boardId = boardId;
-    memoryRepo.data.task.push(newTask);
-    return newTask;
+async function addTaskRepo(boardId: string, task: object) {
+
+
+    const newTask = await getRepository(Task).insert(task);
+
+    const taskRepository = await getRepository(Task)
+
+    await taskRepository.update(newTask.identifiers[0].id, {
+        boardId
+    })
+
+    return getRepository(Task).findOne(newTask.identifiers[0].id);
+
 }
 
 /**
  * Returns a task by id from board by id
- * @param boardId - board id
- * @param taskId - task  id
+ * @param board - board id
+ * @param task - task  id
  * @returns a task by id from board by id
  */
-function getOneTaskRepo(boardId: string, taskId: string) {
+async function getOneTaskRepo(board: string, task: string) {
 
-    return memoryRepo.data.task.filter((x: { boardId: string; id: string; }) => x.boardId === boardId && x.id === taskId)[0];
+    const taskRepository = await getRepository(Task)
+    return taskRepository.findOne({id: task})
+
 }
 
 /**
@@ -44,41 +58,28 @@ function getOneTaskRepo(boardId: string, taskId: string) {
  * @param task - object with an updated task
  * @returns Updated tack
  */
-function updateTaskRepo(boardId: string, taskId: string, task: object) {
+async function updateTaskRepo(boardId: string, taskId: string, task: object) {
 
-    let taskIndex = 0;
-    for (let i = 0; i < memoryRepo.data.task.length; i += 1) {
-        if (memoryRepo.data.task[i].boardId === boardId && memoryRepo.data.task[i].id === taskId) {
-            taskIndex = i;
-            break;
-        }
-    }
-    const updatedBoard = {
-        ...task,
-        id: taskId,
-        boardId
+    const taskRepository = await getRepository(Task)
 
-    };
+    await taskRepository.update(taskId, {
+        ...task
+    })
+    return taskRepository.findOneOrFail({id: taskId})
 
-    memoryRepo.data.task[taskIndex] = {...updatedBoard};
-    return updatedBoard;
+
 }
 
 /**
  * Delete a task by id in the board by id
- * @param boardId - board id
- * @param taskId - task  id
+ * @param board - board id
+ * @param task - task  id
  */
-function deleteTaskRepo(boardId: string, taskId: string) {
-    let taskIndex = null;
-    for (let i = 0; i < memoryRepo.data.task.length; i += 1) {
-        if (memoryRepo.data.task[i].boardId === boardId && memoryRepo.data.task[i].id === taskId) {
-            taskIndex = i;
-            break;
-        }
-    }
+async function deleteTaskRepo(board: string, task: string) {
 
-    memoryRepo.data.task.splice(taskIndex, 1);
+    return getRepository(Task).delete({boardId: board, id: task})
+
+
 
 }
 

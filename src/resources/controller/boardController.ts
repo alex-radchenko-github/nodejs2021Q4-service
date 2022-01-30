@@ -18,14 +18,15 @@ const getAllBoards = async () =>
 
 const getOneBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; send: (arg0: string) => void; }) => {
     const {boardId} = req.params;
-    if (!boardService.getOneBoardService(boardId)[0]) {
+
+    if (await boardService.getOneBoardService(boardId) === false) {
         res.status(404);
         res.send('no ID');
+        return 'no ID'
 
-    } else {
-        const answer = await boardService.getOneBoardService(boardId)[0];
-        res.send(answer);
-    }
+    } 
+        return boardService.getOneBoardService(boardId);
+    
 
 };
 
@@ -65,7 +66,7 @@ const updateBoard = async (req: { params: { boardId: string; }; body: object; },
 const deleteBoard = async (req: { params: { boardId: string; }; }, res: { status: (arg0: number) => void; }) => {
     const {boardId} = req.params;
     res.status(204);
-    boardService.deleteBoardService(boardId);
+    await boardService.deleteBoardService(boardId);
 };
 
 module.exports = {

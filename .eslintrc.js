@@ -1,8 +1,8 @@
 module.exports = {
-  root: true,
   env: {
-    es2020: true,
-    jasmine: true,
+    browser: true,
+    commonjs: true,
+    es2021: true,
     jest: true,
     node: true,
   },
@@ -51,6 +51,9 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     "no-unused-vars": "off",
     "@typescript-eslint/no-inferrable-types":0,
-    "@typescript-eslint/eslint-disable-next-line":0
-  }
-};
+    "@typescript-eslint/eslint-disable-next-line":0,
+    "import/no-import-module-exports":0,
+    "no-await-in-loop":0,
+    "no-use-before-define":0,
+    "class-methods-use-this":0
+}};
