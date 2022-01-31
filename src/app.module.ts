@@ -10,23 +10,25 @@ import { User } from './users/users.model';
 // import { UserRoles } from './roles/user-roles.model';
 
 @Module({
-    controllers: [],
-    providers: [],
-    imports: [
-        ConfigModule.forRoot({
-            envFilePath: `.${process.env.NODE_ENV}.env`,
-        }),
-        SequelizeModule.forRoot({
-            dialect: 'postgres',
-            host: process.env.POSTGRES_HOST,
-            port: Number(process.env.POSTGRES_PORT),
-            username: process.env.POSTGRES_USER,
-            password: process.env.POSTGRES_PASSWORD,
-            database: process.env.POSTGRES_DB,
-            models: [User],
-            autoLoadModels: true,
-        }),
-        UsersModule,
-    ],
+  controllers: [],
+  providers: [],
+  imports: [
+    ConfigModule.forRoot({
+      // envFilePath: `.${process.env.NODE_ENV}.env`,
+      // envFilePath: '.env',
+    }),
+    SequelizeModule.forRoot({
+      dialect: 'postgres',
+      host: 'postgres',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres',
+      database: 'nodejs2021Q4Service',
+      models: [User],
+      autoLoadModels: true,
+      synchronize: true,
+    }),
+    UsersModule,
+  ],
 })
 export class AppModule {}

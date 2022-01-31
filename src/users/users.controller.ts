@@ -1,25 +1,37 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Get,
+  Post,
+  SerializeOptions,
+  UseInterceptors,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './users.model';
 
-@ApiTags('Пользователи')
+@ApiTags('Users')
 @Controller('users')
+@UseInterceptors(ClassSerializerInterceptor)
+@SerializeOptions({
+  strategy: 'excludeAll',
+})
 export class UsersController {
-    constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService) {}
 
-    @ApiOperation({ summary: 'Create user' })
-    @ApiResponse({ status: 200, type: User })
-    @Post()
-    create(@Body() userDto: CreateUserDto) {
-        return this.userService.createUser(userDto);
-    }
+  @ApiOperation({ summary: 'Create user' })
+  @ApiResponse({ status: 200, type: User })
+  @Post()
+  create(@Body() userDto: CreateUserDto) {
+    return this.userService.createUser(userDto);
+  }
 
-    @ApiOperation({ summary: 'Get all users' })
-    @ApiResponse({ status: 200, type: [User] })
-    @Get()
-    getAll() {
-        return this.userService.getAllUsers();
-    }
+  @ApiOperation({ summary: 'Get all users' })
+  @ApiResponse({ status: 200, type: [User] })
+  @Get()
+  getAll() {
+    return this.userService.getAllUsers();
+  }
 }

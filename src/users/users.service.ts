@@ -7,19 +7,13 @@ import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
-    constructor(@InjectModel(User) private userRepository: typeof User) {}
+  constructor(@InjectModel(User) private userRepository: typeof User) {}
 
-    async createUser(dto: CreateUserDto) {
-        const user = await this.userRepository.create(dto);
-        // const role = await this.roleService.getRoleByValue('USER');
-        // await user.$set('roles', [role.id]);
-        return user;
-    }
+  async createUser(dto: CreateUserDto) {
+    return this.userRepository.create(dto);
+  }
 
-    async getAllUsers() {
-        const users = await this.userRepository.findAll({
-            include: { all: true },
-        });
-        return users;
-    }
+  async getAllUsers() {
+    return await this.userRepository.findAll();
+  }
 }
