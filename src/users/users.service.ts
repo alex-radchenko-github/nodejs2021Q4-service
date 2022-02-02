@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './users.model';
+import { User } from './entities/users.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
-import { hashPassword } from './utils/workWithPassword';
+import { hashPassword } from '../utils/workWithPassword';
 
 @Injectable()
 export class UsersService {

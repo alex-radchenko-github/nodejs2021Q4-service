@@ -2,9 +2,6 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
 
-// import { Role } from '../roles/roles.model';
-// import { UserRoles } from '../roles/user-roles.model';
-
 interface UserCreationAttrs {
   name: string;
   login: string;
@@ -40,6 +37,3 @@ export class User extends Model<User, UserCreationAttrs> {
   @Exclude()
   password: string;
 }
-
-// @BelongsToMany(() => Role, () => UserRoles)
-// roles: Role[];
