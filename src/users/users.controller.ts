@@ -2,10 +2,14 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Delete,
   Get,
+  Put,
   Post,
   SerializeOptions,
   UseInterceptors,
+  Param,
+  HttpCode,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -33,5 +37,27 @@ export class UsersController {
   @Get()
   getAll() {
     return this.userService.getAllUsers();
+  }
+
+  @ApiOperation({ summary: 'Delete user' })
+  @ApiResponse({ status: 204, type: User })
+  @Delete(':id')
+  @HttpCode(204)
+  remove(@Param('id') userId: string) {
+    return this.userService.deleteUser(userId);
+  }
+
+  @ApiOperation({ summary: 'Delete user' })
+  @ApiResponse({ status: 204, type: User })
+  @Get(':id')
+  getUser(@Param('id') userId: string) {
+    return this.userService.getUser(userId);
+  }
+
+  @ApiOperation({ summary: 'Delete user' })
+  @ApiResponse({ status: 204, type: User })
+  @Put(':id')
+  updateUser(@Param('id') userId: string) {
+    return this.userService.getUser(userId);
   }
 }
