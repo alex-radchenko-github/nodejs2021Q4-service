@@ -52,6 +52,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/sequelize": "^8.0.0",
     "@nestjs/swagger": "^5.2.0",
+    "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.3",
     "dotenv": "^14.3.2",
     "pg": "^8.7.1",

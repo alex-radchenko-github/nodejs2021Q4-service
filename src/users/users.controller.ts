@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDTO } from './dto/update-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './users.model';
 
@@ -28,8 +29,8 @@ export class UsersController {
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({ status: 200, type: User })
   @Post()
-  create(@Body() userDto: CreateUserDto) {
-    return this.userService.createUser(userDto);
+  create(@Body() dto: CreateUserDto) {
+    return this.userService.createUser(dto);
   }
 
   @ApiOperation({ summary: 'Get all users' })
@@ -55,9 +56,9 @@ export class UsersController {
   }
 
   @ApiOperation({ summary: 'Delete user' })
-  @ApiResponse({ status: 204, type: User })
+  @ApiResponse({ status: 200, type: User })
   @Put(':id')
-  updateUser(@Param('id') userId: string) {
-    return this.userService.getUser(userId);
+  updateUser(@Param('id') userId: string, @Body() dto: UpdateUserDTO) {
+    return this.userService.updateUser(userId, dto);
   }
 }
