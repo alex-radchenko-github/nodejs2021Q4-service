@@ -1,15 +1,17 @@
-import {Injectable, NotFoundException} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
 import { InjectModel } from '@nestjs/sequelize';
-import { User } from '../users/entities/users.entity';
 import { Repository } from 'typeorm';
 import { Board } from './entities/board.entity';
-import { hashPassword } from '../utils/workWithPassword';
+import { Task } from '../tasks/entities/task.entity';
 
 @Injectable()
 export class BoardsService {
-  constructor(@InjectModel(Board) private boardRepository: Repository<Board>) {}
+  constructor(
+    @InjectModel(Board) private boardRepository: Repository<Board>,
+    @InjectModel(Task) private taskRepository: Repository<Task>,
+  ) {}
   create(createBoardDto: CreateBoardDto) {
     return this.boardRepository.create(createBoardDto).save();
     // return this.boardRepository.create(createBoardDto).save();
@@ -32,6 +34,7 @@ export class BoardsService {
   }
 
   async remove(userId: string) {
-    return this.boardRepository.delete({ id: userId });
+    await this.boardRepository.delete({ id: userId });
+    return await this.taskRepository.delete({ boardId: userId });
   }
 }

@@ -5,10 +5,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { hashPassword } from '../utils/workWithPassword';
 import { Repository } from 'typeorm';
+import { Task } from '../tasks/entities/task.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User) private userRepository: Repository<User>) {}
+  constructor(
+    @InjectModel(User) private userRepository: Repository<User>,
+    @InjectModel(Task) private taskRepository: Repository<Task>,
+  ) {}
 
   async createUser(dto: CreateUserDto) {
     return this.userRepository
@@ -21,7 +25,12 @@ export class UsersService {
   }
 
   async deleteUser(userId: string) {
-    return this.userRepository.delete({ id: userId });
+    const usersTasks = await this.taskRepository.find({ userId: userId });
+    for (let i = 0; i < usersTasks.length; i++) {
+      await this.taskRepository.update(usersTasks[i].id, { userId: null });
+    }
+    console.log(usersTasks);
+    return await this.userRepository.delete({ id: userId });
   }
 
   async getUser(userId: string) {
