@@ -1,6 +1,7 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
+import { Board } from '../../boards/entities/board.entity';
 
 interface UserCreationAttrs {
   name: string;
@@ -36,4 +37,7 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   @Exclude()
   password: string;
+
+  @HasMany(() => Board)
+  boards: Board[];
 }

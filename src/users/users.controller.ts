@@ -17,8 +17,8 @@ import { UpdateUserDTO } from './dto/update-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './entities/users.entity';
 
-@ApiTags('Users')
 @Controller('users')
+@ApiTags('Users')
 @UseInterceptors(ClassSerializerInterceptor)
 @SerializeOptions({
   strategy: 'excludeAll',

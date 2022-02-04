@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import 'dotenv/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 import { User } from './users/entities/users.entity';
 import { BoardsModule } from './boards/boards.module';
+import { Board } from './boards/entities/board.entity';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   controllers: [],
@@ -21,12 +23,13 @@ import { BoardsModule } from './boards/boards.module';
       username: 'postgres',
       password: 'postgres',
       database: 'nodejs2021Q4Service',
-      models: [User],
+      models: [User, Board],
       autoLoadModels: true,
       synchronize: true,
     }),
     UsersModule,
     BoardsModule,
+    TasksModule,
   ],
 })
 export class AppModule {}
