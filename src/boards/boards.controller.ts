@@ -6,9 +6,6 @@ import {
   Param,
   Delete,
   Put,
-  UseInterceptors,
-  ClassSerializerInterceptor,
-  SerializeOptions,
   HttpCode,
 } from '@nestjs/common';
 import { BoardsService } from './boards.service';
@@ -37,7 +34,7 @@ export class BoardsController {
   findOne(@Param('id') id: string) {
     return this.boardsService.findOne(id);
   }
-  //
+
   @Put(':id')
   update(@Param('id') id: string, @Body() updateBoardDto: UpdateBoardDto) {
     return this.boardsService.update(id, updateBoardDto);

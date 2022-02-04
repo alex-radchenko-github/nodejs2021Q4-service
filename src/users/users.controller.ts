@@ -58,7 +58,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user' })
   @ApiResponse({ status: 200, type: User })
   @Put(':id')
-  updateUser(@Param('id') userId: string, @Body() dto: UpdateUserDTO) {
-    return this.userService.updateUser(userId, dto);
+  updateUser(@Param('id') id: string, @Body() dto: UpdateUserDTO) {
+    return this.userService.updateUser(id, dto);
   }
 }

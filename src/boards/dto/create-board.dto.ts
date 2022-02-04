@@ -1,8 +1,9 @@
-import { ApiProperty } from '@nestjs/swagger';
+class BoardColum {
+  title: string;
+  order: number;
+}
 
 export class CreateBoardDto {
-  @ApiProperty({ example: 'Work project', description: 'title' })
   readonly title: string;
-  readonly userId: string;
-  readonly columns: { title: string; order: number }[];
+  readonly columns: BoardColum[];
 }
