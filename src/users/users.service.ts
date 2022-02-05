@@ -29,7 +29,6 @@ export class UsersService {
     for (let i = 0; i < usersTasks.length; i++) {
       await this.taskRepository.update(usersTasks[i].id, { userId: null });
     }
-    console.log(usersTasks);
     return await this.userRepository.delete({ id: userId });
   }
 

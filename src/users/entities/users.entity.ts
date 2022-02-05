@@ -1,22 +1,7 @@
-// import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
-import {
-  BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-} from 'typeorm';
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
-// import { Board } from '../../boards/entities/board.entity';
-
-// interface UserCreationAttrs {
-//   name: string;
-//   login: string;
-//   password: string;
-// }
-// export class User extends BaseEntity
 @Entity()
 export class User extends BaseEntity {
   @ApiProperty({

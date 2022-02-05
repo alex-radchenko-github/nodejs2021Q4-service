@@ -1,9 +1,4 @@
-import {
-  HttpException,
-  HttpStatus,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
@@ -18,7 +13,6 @@ export class AuthService {
   ) {}
 
   async login(userDto: CreateUserDto) {
-    console.log(userDto);
     const user = await this.validateUser(userDto);
     return this.generateToken(user);
   }

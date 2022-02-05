@@ -14,7 +14,6 @@ export class BoardsService {
   ) {}
   create(createBoardDto: CreateBoardDto) {
     return this.boardRepository.create(createBoardDto).save();
-    // return this.boardRepository.create(createBoardDto).save();
   }
 
   async findAll() {

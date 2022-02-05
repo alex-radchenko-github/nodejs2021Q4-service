@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Put,
@@ -30,7 +29,6 @@ export class TasksController {
 
   @Get()
   findAll(@Param('boardId') boardId: string) {
-    console.log(boardId);
     return this.tasksService.findAll(boardId);
   }
 
