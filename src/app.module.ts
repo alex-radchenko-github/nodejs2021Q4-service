@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import 'dotenv/config';
 // import { SequelizeModule } from '@nestjs/sequelize';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,6 +11,7 @@ import { Board } from './boards/entities/board.entity';
 import { TasksModule } from './tasks/tasks.module';
 import { Task } from './tasks/entities/task.entity';
 import { AuthModule } from './auth/auth.module';
+import LogsMiddleware from './middlewares/logs.middleware';
 
 @Module({
   imports: [
@@ -35,28 +36,8 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
 })
-// @Module({
-//   controllers: [],
-//   providers: [],
-//   imports: [
-//     ConfigModule.forRoot({
-//       // envFilePath: `.${process.env.NODE_ENV}.env`,
-//       // envFilePath: '.env',
-//     }),
-//     SequelizeModule.forRoot({
-//       dialect: 'postgres',
-//       host: 'postgres',
-//       port: 5432,
-//       username: 'postgres',
-//       password: 'postgres',
-//       database: 'nodejs2021Q4Service',
-//       models: [User, Board],
-//       autoLoadModels: true,
-//       synchronize: true,
-//     }),
-//     UsersModule,
-//     BoardsModule,
-//     TasksModule,
-//   ],
-// })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LogsMiddleware).forRoutes('*');
+  }
+}

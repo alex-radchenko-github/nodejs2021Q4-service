@@ -5,7 +5,9 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function start() {
   const PORT = process.env.PORT || 4000;
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['error', 'warn', 'log', 'verbose', 'debug'],
+  });
 
   const config = new DocumentBuilder()
     .setTitle('kanban-api-service')
