@@ -10,12 +10,14 @@ import {
   UseInterceptors,
   Param,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './entities/users.entity';
+import { JwtAuthGuard } from '../auth/auth.guard';
 
 @Controller('users')
 @ApiTags('Users')
@@ -23,6 +25,7 @@ import { User } from './entities/users.entity';
 @SerializeOptions({
   strategy: 'excludeAll',
 })
+@UseGuards(JwtAuthGuard)
 export class UsersController {
   constructor(private userService: UsersService) {}
 
