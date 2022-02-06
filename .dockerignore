@@ -1,4 +1,5 @@
 node_modules.tmp
+files
 dist
 node_modules
 documentation
