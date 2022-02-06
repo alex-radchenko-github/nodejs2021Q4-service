@@ -11,6 +11,7 @@ import { Board } from './boards/entities/board.entity';
 import { TasksModule } from './tasks/tasks.module';
 import { Task } from './tasks/entities/task.entity';
 import { AuthModule } from './auth/auth.module';
+import { FileModule } from './file/file.module';
 import LogsMiddleware from './middlewares/logs.middleware';
 
 @Module({
@@ -19,7 +20,6 @@ import LogsMiddleware from './middlewares/logs.middleware';
       // envFilePath: `.${process.env.NODE_ENV}.env`,
       // envFilePath: '.env',
     }),
-
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'postgres',
@@ -34,6 +34,7 @@ import LogsMiddleware from './middlewares/logs.middleware';
     BoardsModule,
     TasksModule,
     AuthModule,
+    FileModule,
   ],
 })
 export class AppModule {
