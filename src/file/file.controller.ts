@@ -15,14 +15,14 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { editFileName, imageFileFilter } from '../utils/file-upload.utils';
+import { editFileName } from '../utils/file-upload.utils';
 import { JwtAuthGuard } from '../auth/auth.guard';
 import { createReadStream } from 'fs';
 import * as fs from 'fs';
 import { join } from 'path';
 import 'dotenv/config';
 import fastify = require('fastify');
-import LogsMiddleware from '../middlewares/logs.middleware';
+// import LogsMiddleware from '../middlewares/logs.middleware';
 import * as util from 'util';
 import * as stream from 'stream';
 
@@ -36,7 +36,7 @@ export class FileControllerExpress {
         destination: './files',
         filename: editFileName,
       }),
-      fileFilter: imageFileFilter,
+      // fileFilter: imageFileFilter,
     }),
   )
   async uploadedFile(@UploadedFile() file) {
@@ -53,7 +53,7 @@ export class FileControllerExpress {
         destination: './files',
         filename: editFileName,
       }),
-      fileFilter: imageFileFilter,
+      // fileFilter: imageFileFilter,
     }),
   )
   async uploadMultipleFiles(@UploadedFiles() files) {
