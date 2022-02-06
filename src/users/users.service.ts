@@ -1,17 +1,17 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { User } from './entities/users.entity';
-import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { hashPassword } from '../utils/workWithPassword';
 import { Repository } from 'typeorm';
 import { Task } from '../tasks/entities/task.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectModel(User) private userRepository: Repository<User>,
-    @InjectModel(Task) private taskRepository: Repository<Task>,
+    @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(Task) private taskRepository: Repository<Task>,
   ) {}
 
   async createUser(dto: CreateUserDto) {

@@ -1,7 +1,6 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import 'dotenv/config';
-// import { SequelizeModule } from '@nestjs/sequelize';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import 'dotenv/config';
 
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
@@ -23,11 +22,11 @@ import { migration1644121535099 } from './migration/1644121535099-migration';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgres',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'nodejs2021Q4Service',
+      host: process.env.POSTGRES_HOST,
+      port: +process.env.POSTGRES_PORT,
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DB,
       entities: [User, Board, Task],
       logging: false,
       synchronize: false,
@@ -43,6 +42,8 @@ import { migration1644121535099 } from './migration/1644121535099-migration';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LogsMiddleware).forRoutes('*');
+    if (process.env.FASTIFY_MODE !== 'true') {
+      consumer.apply(LogsMiddleware).forRoutes('*');
+    }
   }
 }

@@ -46,7 +46,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user' })
   @ApiResponse({ status: 204, type: User })
   @Delete(':id')
-  @HttpCode(204)
+  // @HttpCode(204)
   remove(@Param('id') userId: string) {
     return this.userService.deleteUser(userId);
   }

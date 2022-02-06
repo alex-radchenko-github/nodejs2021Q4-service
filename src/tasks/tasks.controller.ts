@@ -46,7 +46,7 @@ export class TasksController {
   }
 
   @Delete(':taskId')
-  @HttpCode(204)
+  // @HttpCode(204)
   remove(@Param('taskId') taskId: string, @Param('boardId') boardId: string) {
     return this.tasksService.remove(boardId, taskId);
   }
