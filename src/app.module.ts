@@ -13,6 +13,7 @@ import { Task } from './tasks/entities/task.entity';
 import { AuthModule } from './auth/auth.module';
 import { FileModule } from './file/file.module';
 import LogsMiddleware from './middlewares/logs.middleware';
+import { migration1644121535099 } from './migration/1644121535099-migration';
 
 @Module({
   imports: [
@@ -28,7 +29,10 @@ import LogsMiddleware from './middlewares/logs.middleware';
       password: 'postgres',
       database: 'nodejs2021Q4Service',
       entities: [User, Board, Task],
-      synchronize: true,
+      logging: false,
+      synchronize: false,
+      migrationsRun: true,
+      migrations: [migration1644121535099],
     }),
     UsersModule,
     BoardsModule,
