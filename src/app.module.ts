@@ -46,6 +46,7 @@ import { migration1644121535099 } from './migration/1644121535099-migration';
       synchronize: false,
       migrationsRun: true,
       migrations: [migration1644121535099],
+      ssl: { rejectUnauthorized: false },
     }),
     UsersModule,
     BoardsModule,
