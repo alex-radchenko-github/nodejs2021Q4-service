@@ -1,0 +1,51 @@
+config:
+  target: "http://localhost:4000"
+  phases:
+    - duration: 20
+      arrivalRate: 50
+      name: load 50 users
+
+
+scenarios:
+  - name: "get all users"
+    flow:
+      - get:
+          url: "/users"
+          headers:
+            authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOGFjMjYwLTZlMjAtNGNhYS1hMDUzLTU3MDI4ODI0ZjRmOCIsImxvZ2luIjoiYWRtaW4iLCJpYXQiOjE2NDQxNzU5MjAsImV4cCI6MTY0NDI2MjMyMH0.zmvH6tfVKHebJGih34KVLlj-0R-zESzNZRXAdpNfyaU"
+
+  - name: "get user by id"
+    flow:
+      - get:
+          url: "/users/bb8ac260-6e20-4caa-a053-57028824f4f8"
+          headers:
+            authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOGFjMjYwLTZlMjAtNGNhYS1hMDUzLTU3MDI4ODI0ZjRmOCIsImxvZ2luIjoiYWRtaW4iLCJpYXQiOjE2NDQxNzU5MjAsImV4cCI6MTY0NDI2MjMyMH0.zmvH6tfVKHebJGih34KVLlj-0R-zESzNZRXAdpNfyaU"
+
+  - name: "delete users"
+    flow:
+      - delete:
+          url: "/users/bb8ac261-6e21-1caa-a053-57028824f4f8"
+          headers:
+            authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOGFjMjYwLTZlMjAtNGNhYS1hMDUzLTU3MDI4ODI0ZjRmOCIsImxvZ2luIjoiYWRtaW4iLCJpYXQiOjE2NDQxNzU5MjAsImV4cCI6MTY0NDI2MjMyMH0.zmvH6tfVKHebJGih34KVLlj-0R-zESzNZRXAdpNfyaU"
+
+  - name: "Create user"
+    flow:
+      - post:
+          url: "/users"
+          headers:
+            authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOGFjMjYwLTZlMjAtNGNhYS1hMDUzLTU3MDI4ODI0ZjRmOCIsImxvZ2luIjoiYWRtaW4iLCJpYXQiOjE2NDQxNzU5MjAsImV4cCI6MTY0NDI2MjMyMH0.zmvH6tfVKHebJGih34KVLlj-0R-zESzNZRXAdpNfyaU"
+          json:
+            name: "{{ $randomString() }}"
+            login: "{{ $randomString() }}"
+            password: "{{ $randomString() }}"
+
+  - name: "Update user user"
+    flow:
+      - put:
+          url: "/users/32ca2c7e-efb1-479d-b1f7-4144f57d387a"
+          headers:
+            authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJiOGFjMjYwLTZlMjAtNGNhYS1hMDUzLTU3MDI4ODI0ZjRmOCIsImxvZ2luIjoiYWRtaW4iLCJpYXQiOjE2NDQxNzU5MjAsImV4cCI6MTY0NDI2MjMyMH0.zmvH6tfVKHebJGih34KVLlj-0R-zESzNZRXAdpNfyaU"
+          json:
+            name: "{{ $randomString() }}"
+            login: "admin"
+            password: "$2a$07$I6lovwFvNSmSegctHRN86eMUrJDPlIl/nwRXjApL500sqNYRuOvd2"

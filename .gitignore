@@ -1,5 +1,9 @@
 node_modules
-node_modules.nosync
+node_modules.tmp
+documentation
+dist
+files
 .idea
 .github
 .vscode
+/dist/

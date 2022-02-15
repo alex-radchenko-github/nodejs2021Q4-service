@@ -8,7 +8,7 @@ services:
       - logs/:/app/logs/
 
     ports:
-      - ${PORT}:${PORT}
+      - "4000:4000"
     command: npm run start
     depends_on:
       - postgres
@@ -19,11 +19,11 @@ services:
     container_name: postgres
     build: ./db/.
     ports:
-      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+      - "5432:5432"
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "nodejs2021Q4Service"
     volumes:
       - db/:/var/lib/postgresql/data/
     restart: on-failure

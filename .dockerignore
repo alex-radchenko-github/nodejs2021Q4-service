@@ -1,5 +1,8 @@
-node_modules.nosync
+node_modules.tmp
+files
+dist
 node_modules
+documentation
 .gitignore
 .idea
 .github
