@@ -35,12 +35,7 @@ import { migration1644121535099 } from './migration/1644121535099-migration';
     // }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ec2-54-83-21-198.compute-1.amazonaws.com',
-      port: 5432,
-      username: 'kydxwgwxzjpjhr',
-      password:
-        '8512c3d538a637805b1a8815e872e553064590207df5056ca41de0b1d8dc6f49',
-      database: 'db9m5824ko34qc',
+      url: process.env.DATABASE_URL,
       entities: [User, Board, Task],
       logging: false,
       synchronize: false,

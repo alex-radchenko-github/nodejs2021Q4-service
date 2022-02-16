@@ -10,10 +10,11 @@ dotenv.config({
 
 const routes = require('./routes');
 
-const host =
-  process.env.HOST || process.env.PORT
-    ? `localhost:${process.env.PORT}`
-    : 'localhost:4000';
+// const host =
+//   process.env.HOST || process.env.PORT
+//     ? `localhost:${process.env.PORT}`
+//     : 'localhost:4000';
+const host = 'https://testttttt67.herokuapp.com'
 debug('HOST', host);
 
 const request = supertest(host);
