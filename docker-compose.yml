@@ -5,7 +5,7 @@ services:
     build: .
     volumes:
       - .:/app
-      - logs/:/app/logs/
+      - logs:/app/logs/
 
     ports:
       - "4000:4000"
@@ -25,7 +25,7 @@ services:
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "nodejs2021Q4Service"
     volumes:
-      - db/:/var/lib/postgresql/data/
+      - db:/var/lib/postgresql/data/
     restart: on-failure
     networks:
       - user-defined-bridge
