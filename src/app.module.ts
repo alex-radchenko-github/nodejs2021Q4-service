@@ -27,7 +27,8 @@ import { migration1644121535099 } from './migration/1644121535099-migration';
       // username: process.env.POSTGRES_USER,
       // password: process.env.POSTGRES_PASSWORD,
       // database: process.env.POSTGRES_DB,
-      url: process.env.HEROKU_URL,
+      // url: process.env.HEROKU_URL,
+      url: process.env.DATABASE_URL,
       // extra: {
       //   ssl: true,
       // },
